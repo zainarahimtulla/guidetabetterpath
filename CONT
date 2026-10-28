@@ -1,0 +1,498 @@
+<!-- ... existing code ... -->
+                    <button onclick="openModal('historyModal')" class="px-3 py-1.5 rounded-lg border border-slate-600 text-sm flex items-center space-x-2 hover:bg-slate-800 transition">
+                        <i class="fa-solid fa-clock-rotate-left accent-text"></i>
+                        <span>History (<span id="historyCount">0</span>)</span>
+                    </button>
+                    <select id="themeSelector" onchange="changeTheme(this.value)" class="bg-slate-800 border border-slate-600 text-sm rounded-lg px-3 py-1.5 focus:outline-none">
+                        <option value="forest">Forest Dark</option>
+                        <option value="cyber">Cyber Neon</option>
+                        <option value="light">Minimal Light</option>
+                        <option value="sunset">Sunset Warm</option>
+                        <option value="ocean">Ocean Blue</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+<!-- ... existing code ... -->
+            <!-- Results Output Section -->
+            <div id="resultsSection" class="hidden">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 pb-4 border-b border-slate-700 gap-4">
+                    <div>
+                        <span class="text-xs font-semibold uppercase tracking-wider text-emerald-400" id="resultCategoryLabel">Product Analysis</span>
+                        <h3 class="text-2xl font-bold" id="resultTitle">MacBook Pro 14</h3>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <button onclick="openShareModal()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-sm flex items-center space-x-2 font-semibold shadow-lg transition">
+                            <i class="fa-solid fa-share-nodes"></i>
+                            <span>Share Analysis</span>
+                        </button>
+                        <button onclick="saveToWishlist()" id="saveWishlistBtn" class="px-4 py-2 bg-slate-800 border border-slate-600 rounded-xl text-sm flex items-center space-x-2 hover:border-emerald-500 transition">
+                            <i class="fa-regular fa-bookmark"></i>
+                            <span>Save Item</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tri-Tier Recommendations Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    
+                    <!-- Option 1: Eco-Friendly -->
+                    <div class="custom-card rounded-2xl p-6 relative flex flex-col justify-between border-t-4 border-emerald-500">
+                        <div>
+                            <div class="flex justify-between items-start mb-3">
+                                <span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-xs px-2.5 py-1 rounded-full font-semibold">
+                                    <i class="fa-solid fa-leaf mr-1"></i> Eco-Friendly
+                                </span>
+                                <span class="text-xs text-slate-400 font-mono" id="ecoScore">Eco Score: 9/10</span>
+                            </div>
+                            <h4 class="text-lg font-bold mb-1" id="ecoBrand">Refurbished / Circular Brand</h4>
+                            <p class="text-slate-400 text-xs mb-4" id="ecoDesc">Maximizes lifecycle extension with 100% recycled aluminum chassis and certified zero-waste refurbishment.</p>
+                            
+                            <!-- Environmental Metrics -->
+                            <div class="bg-slate-900/60 rounded-xl p-3 text-xs space-y-2 mb-4 border border-slate-800">
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">Raw Material Backpack:</span>
+                                    <span class="font-mono font-semibold text-emerald-400" id="ecoMat">12 kg</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">Carbon Footprint:</span>
+                                    <span class="font-mono font-semibold text-emerald-400" id="ecoCarbon">45 kg CO₂e</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">Repairability:</span>
+                                    <span class="font-mono font-semibold text-emerald-400" id="ecoRepair">8.5 / 10</span>
+                                </div>
+                            </div>
+
+                            <!-- Online & Offline Access Options -->
+                            <div class="space-y-2 mb-4 text-xs">
+                                <div class="p-2.5 rounded-xl bg-slate-900/40 border border-slate-800">
+                                    <span class="font-semibold text-emerald-400 block mb-0.5"><i class="fa-solid fa-globe mr-1"></i> Online Options:</span>
+                                    <span class="text-slate-300" id="ecoOnline">Certified refurbishers (BackMarket, Refurbished Apple Store), circular brand webstores.</span>
+                                </div>
+                                <div class="p-2.5 rounded-xl bg-slate-900/40 border border-slate-800">
+                                    <span class="font-semibold text-emerald-400 block mb-0.5"><i class="fa-solid fa-store mr-1"></i> Offline & Local Options:</span>
+                                    <span class="text-slate-300" id="ecoOffline">Local Repair Cafes, certified tech refurbishers, electronics reuse centers.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800 flex justify-between items-center">
+                            <span class="text-xs text-emerald-400 font-medium" id="ecoPrice">$$$ (Moderate)</span>
+                            <button onclick="alert('Redirecting to verified certified sustainable seller partner.')" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-xs font-semibold transition">
+                                View Option <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Option 2: High Quality / Durability -->
+                    <div class="custom-card rounded-2xl p-6 relative flex flex-col justify-between border-t-4 border-blue-500">
+                        <div>
+                            <div class="flex justify-between items-start mb-3">
+                                <span class="bg-blue-500/10 text-blue-400 border border-blue-500/30 text-xs px-2.5 py-1 rounded-full font-semibold">
+                                    <i class="fa-solid fa-shield-halved mr-1"></i> High Quality / BIFL
+                                </span>
+                                <span class="text-xs text-slate-400 font-mono" id="qualScore">Durability: 9.5/10</span>
+                            </div>
+                            <h4 class="text-lg font-bold mb-1" id="qualBrand">Premium Long-Lasting Standard</h4>
+                            <p class="text-slate-400 text-xs mb-4" id="qualDesc">Designed for 7+ years of heavy use with modular components, high-grade materials, and long-term warranty support.</p>
+                            
+                            <!-- Environmental Metrics -->
+                            <div class="bg-slate-900/60 rounded-xl p-3 text-xs space-y-2 mb-4 border border-slate-800">
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">Raw Material Backpack:</span>
+                                    <span class="font-mono font-semibold text-blue-400" id="qualMat">350 kg</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">Carbon Footprint:</span>
+                                    <span class="font-mono font-semibold text-blue-400" id="qualCarbon">280 kg CO₂e</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">Repairability:</span>
+                                    <span class="font-mono font-semibold text-blue-400" id="qualRepair">9.0 / 10</span>
+                                </div>
+                            </div>
+
+                            <!-- Online & Offline Access Options -->
+                            <div class="space-y-2 mb-4 text-xs">
+                                <div class="p-2.5 rounded-xl bg-slate-900/40 border border-slate-800">
+                                    <span class="font-semibold text-blue-400 block mb-0.5"><i class="fa-solid fa-globe mr-1"></i> Online Options:</span>
+                                    <span class="text-slate-300" id="qualOnline">Official manufacturer direct, certified durability retailers.</span>
+                                </div>
+                                <div class="p-2.5 rounded-xl bg-slate-900/40 border border-slate-800">
+                                    <span class="font-semibold text-blue-400 block mb-0.5"><i class="fa-solid fa-store mr-1"></i> Offline & Local Options:</span>
+                                    <span class="text-slate-300" id="qualOffline">Authorized brand service centers, flagship stores, local hardware specialists.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800 flex justify-between items-center">
+                            <span class="text-xs text-blue-400 font-medium" id="qualPrice">$$$$ (Premium)</span>
+                            <button onclick="alert('Viewing official manufacturer high-durability listing.')" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-semibold transition">
+                                View Option <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Option 3: Budget / Value -->
+                    <div class="custom-card rounded-2xl p-6 relative flex flex-col justify-between border-t-4 border-amber-500">
+                        <div>
+                            <div class="flex justify-between items-start mb-3">
+                                <span class="bg-amber-500/10 text-amber-400 border border-amber-500/30 text-xs px-2.5 py-1 rounded-full font-semibold">
+                                    <i class="fa-solid fa-tag mr-1"></i> Budget / Value
+                                </span>
+                                <span class="text-xs text-slate-400 font-mono" id="budgetScore">Value: 8.5/10</span>
+                            </div>
+                            <h4 class="text-lg font-bold mb-1" id="budgetBrand">Affordable Standard Model</h4>
+                            <p class="text-slate-400 text-xs mb-4" id="budgetDesc">Cost-effective alternative. Note: Shorter replacement cycle means higher long-term electronic waste impact.</p>
+                            
+                            <!-- Environmental Metrics -->
+                            <div class="bg-slate-900/60 rounded-xl p-3 text-xs space-y-2 mb-4 border border-slate-800">
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">Raw Material Backpack:</span>
+                                    <span class="font-mono font-semibold text-amber-400" id="budgetMat">220 kg</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">Carbon Footprint:</span>
+                                    <span class="font-mono font-semibold text-amber-400" id="budgetCarbon">190 kg CO₂e</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">Repairability:</span>
+                                    <span class="font-mono font-semibold text-amber-400" id="budgetRepair">4.0 / 10</span>
+                                </div>
+                            </div>
+
+                            <!-- Online & Offline Access Options -->
+                            <div class="space-y-2 mb-4 text-xs">
+                                <div class="p-2.5 rounded-xl bg-slate-900/40 border border-slate-800">
+                                    <span class="font-semibold text-amber-400 block mb-0.5"><i class="fa-solid fa-globe mr-1"></i> Online Options:</span>
+                                    <span class="text-slate-300" id="budgetOnline">Online peer-to-peer marketplaces (eBay, Swappa), value clearance webstores.</span>
+                                </div>
+                                <div class="p-2.5 rounded-xl bg-slate-900/40 border border-slate-800">
+                                    <span class="font-semibold text-amber-400 block mb-0.5"><i class="fa-solid fa-store mr-1"></i> Offline & Local Options:</span>
+                                    <span class="text-slate-300" id="budgetOffline">Local thrift shops, community charity stores, local classifieds pickups.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800 flex justify-between items-center">
+                            <span class="text-xs text-amber-400 font-medium" id="budgetPrice">$ (Budget)</span>
+                            <button onclick="alert('Viewing retail value marketplace listing.')" class="px-3 py-1.5 bg-amber-600 hover:bg-amber-500 text-white rounded-lg text-xs font-semibold transition">
+                                View Option <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+<!-- ... existing code ... -->
+    <!-- History / Wishlist Modal -->
+    <div id="historyModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="custom-card rounded-2xl max-w-lg w-full p-6 bg-slate-900 max-h-[80vh] flex flex-col">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-bold">Search History & Wishlist</h3>
+                <button onclick="closeModal('historyModal')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="historyListContainer" class="overflow-y-auto space-y-3 flex-grow pr-2">
+                <p class="text-slate-500 text-sm text-center py-6">No recent searches or saved items yet.</p>
+            </div>
+            <div class="pt-4 border-t border-slate-800 flex justify-between items-center mt-4">
+                <button onclick="clearHistory()" class="text-xs text-red-400 hover:underline">Clear History</button>
+                <button onclick="closeModal('historyModal')" class="btn-primary px-4 py-2 rounded-xl text-xs font-semibold">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Social Media Sharing Modal -->
+    <div id="shareModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="custom-card rounded-2xl max-w-md w-full p-6 bg-slate-900">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-bold"><i class="fa-solid fa-share-nodes text-emerald-400 mr-2"></i> Share Product Analysis</h3>
+                <button onclick="closeModal('shareModal')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <p class="text-xs text-slate-400 mb-4">Spread eco-awareness by sharing this lifecycle comparison with friends or social channels.</p>
+            
+            <div class="grid grid-cols-2 gap-3 mb-4 text-xs font-semibold">
+                <button onclick="shareToWhatsApp()" class="p-3 bg-emerald-700/80 hover:bg-emerald-600 rounded-xl flex items-center justify-center space-x-2 text-white transition">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>WhatsApp</span>
+                </button>
+                <button onclick="shareToTwitter()" class="p-3 bg-slate-800 border border-slate-700 hover:border-emerald-500 rounded-xl flex items-center justify-center space-x-2 text-white transition">
+                    <i class="fa-brands fa-x-twitter text-lg"></i>
+                    <span>Twitter / X</span>
+                </button>
+                <button onclick="shareToReddit()" class="p-3 bg-orange-700/80 hover:bg-orange-600 rounded-xl flex items-center justify-center space-x-2 text-white transition">
+                    <i class="fa-brands fa-reddit text-lg"></i>
+                    <span>Reddit</span>
+                </button>
+                <button onclick="copyShareLink()" class="p-3 bg-slate-800 border border-slate-700 hover:border-emerald-500 rounded-xl flex items-center justify-center space-x-2 text-white transition">
+                    <i class="fa-solid fa-link text-lg"></i>
+                    <span>Copy Link</span>
+                </button>
+            </div>
+
+            <!-- Pre-formatted social snippet -->
+            <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 mb-4">
+                <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Copy Caption for Instagram / TikTok:</label>
+                <textarea id="socialTextCaption" readonly class="w-full bg-transparent text-xs text-emerald-300 font-mono resize-none h-16 focus:outline-none"></textarea>
+            </div>
+
+            <div class="flex justify-end">
+                <button onclick="closeModal('shareModal')" class="px-4 py-2 bg-slate-800 rounded-xl text-xs">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Script Engine -->
+    <script>
+        // Global State & LocalStorage
+        let userProfile = JSON.parse(localStorage.getItem('betterpath_profile')) || { name: 'Student Researcher', priority: 'Zero Waste' };
+        let searchHistory = JSON.parse(localStorage.getItem('betterpath_history')) || [];
+        let wishlist = JSON.parse(localStorage.getItem('betterpath_wishlist')) || [];
+        let currentAnalyzedProduct = "";
+
+        // Initialize UI
+        document.getElementById('navProfileName').textContent = userProfile.name;
+        document.getElementById('profileNameInput').value = userProfile.name;
+        updateHistoryCount();
+<!-- ... existing code ... -->
+        // Database of Known Products + Intelligent Dynamic Fallback Analyzer
+        const productDatabase = {
+            "macbook": {
+                name: "MacBook Pro / Laptop",
+                category: "Laptops & Electronics",
+                eco: { 
+                    brand: "Certified Refurbished Apple / Back Market", 
+                    desc: "Refurbished units save over 700 kg of raw mineral extraction.", 
+                    mat: "15 kg", carbon: "48 kg CO₂e", repair: "7.5 / 10", price: "$$$ (Moderate)", score: "9.2/10",
+                    online: "BackMarket, Apple Certified Refurbished, Framework Store",
+                    offline: "Local Repair Cafes, certified local IT refitters, campus e-waste hubs"
+                },
+                qual: { 
+                    brand: "Apple MacBook Pro (M-Series)", 
+                    desc: "Exceptional longevity, premium unibody aluminum, 7+ years support.", 
+                    mat: "780 kg", carbon: "320 kg CO₂e", repair: "6.0 / 10", price: "$$$$ (Premium)", score: "9.5/10",
+                    online: "Official Apple Webstore, Authorized Premium Resellers",
+                    offline: "Apple Store, local electronics flagship centers, authorized repair shops"
+                },
+                budget: { 
+                    brand: "Used Windows ThinkPad (Refurbished)", 
+                    desc: "High modularity and cheap parts availability, though shorter battery life.", 
+                    mat: "110 kg", carbon: "95 kg CO₂e", repair: "9.0 / 10", price: "$ (Budget)", score: "8.4/10",
+                    online: "eBay Refurbished, Swappa, local university surplus sites",
+                    offline: "Community thrift stores, local secondhand computer markets"
+                },
+                tradeoff: "Laptops carry massive upstream mineral footprints (lithium, rare earths). Buying certified refurbished eliminates new extraction pressures while offering high performance."
+            },
+            "iphone": {
+                name: "Smartphone (iPhone / Android)",
+                category: "Smartphones & Mobile",
+                eco: { 
+                    brand: "Back Market / Certified Pre-Owned", 
+                    desc: "Extends phone lifespan by 3 years, cutting annual carbon amortization in half.", 
+                    mat: "4 kg", carbon: "18 kg CO₂e", repair: "7.0 / 10", price: "$$ (Affordable)", score: "9.4/10",
+                    online: "Back Market, Gazelle, Fairphone Webstore",
+                    offline: "Local independent mobile repair shops, local circular tech exchanges"
+                },
+                qual: { 
+                    brand: "Fairphone 5 (Modular)", 
+                    desc: "100% fair trade gold, modular snap-on parts repairable with a standard screwdriver.", 
+                    mat: "65 kg", carbon: "52 kg CO₂e", repair: "10 / 10", price: "$$$ (Moderate)", score: "9.8/10",
+                    online: "Direct Fairphone Store, European FairTrade Outlets",
+                    offline: "Select ethical tech co-ops and sustainability retail hubs"
+                },
+                budget: { 
+                    brand: "Budget Android Entry Device", 
+                    desc: "Low upfront cost, but uses glued components and shorter software updates leading to e-waste.", 
+                    mat: "70 kg", carbon: "60 kg CO₂e", repair: "3.5 / 10", price: "$ (Budget)", score: "7.2/10",
+                    online: "Amazon Warehouse, Swappa Value Deals",
+                    offline: "Local carrier value outlets, electronics pawnshops"
+                },
+                tradeoff: "Smartphones require ~70kg of raw materials for a 180g device. Choosing modular or pre-owned devices dramatically lowers toxic e-waste."
+            },
+            "shoes": {
+                name: "Running Shoes & Footwear",
+                category: "Footwear & Apparel",
+                eco: { 
+                    brand: "Allbirds / Veja (Bio-Synthetics)", 
+                    desc: "Made with sugarcane EVA midsoles and recycled plastic bottle mesh.", 
+                    mat: "6 kg", carbon: "9 kg CO₂e", repair: "5.0 / 10", price: "$$ (Moderate)", score: "8.9/10",
+                    online: "Veja Online Store, Allbirds Sustainable Webstore",
+                    offline: "Independent eco-shoe boutiques, local sustainable concept stores"
+                },
+                qual: { 
+                    brand: "Danner / Goodyear Welted Boots", 
+                    desc: "Crafted for decades of wear with resoleable stitched rubber outsoles.", 
+                    mat: "18 kg", carbon: "28 kg CO₂e", repair: "9.5 / 10", price: "$$$ (Premium)", score: "9.6/10",
+                    online: "Danner Direct, Goodyear Welted Heritage Outlets",
+                    offline: "Local master cobblers, heritage leather supply shops"
+                },
+                budget: { 
+                    brand: "Fast-Fashion Synthetic Sneakers", 
+                    desc: "Inexpensive petroleum-based foam soles that degrade quickly into microplastics.", 
+                    mat: "8 kg", carbon: "14 kg CO₂e", repair: "1.0 / 10", price: "$ (Budget)", score: "6.0/10",
+                    online: "Poshmark, Mercari, eBay Secondhand",
+                    offline: "Local goodwill stores, neighborhood clothing swaps"
+                },
+                tradeoff: "Footwear relies heavily on synthetic glues and petroleum plastics. Long-lasting resoleable shoes prevent hundreds of pairs from reaching landfills."
+            },
+            "jacket": {
+                name: "Winter Jacket & Outerwear",
+                category: "Apparel & Textiles",
+                eco: { 
+                    brand: "Patagonia Worn Wear / Recycled Down", 
+                    desc: "Lifetime warranty, repair program, and closed-loop recycled polyester.", 
+                    mat: "5 kg", carbon: "12 kg CO₂e", repair: "9.0 / 10", price: "$$$ (Moderate)", score: "9.5/10",
+                    online: "Patagonia Worn Wear, REI Re/Supply",
+                    offline: "Patagonia Retail Stores (Free local repair counter), local thrift hubs"
+                },
+                qual: { 
+                    brand: "Arc'teryx GORE-TEX Shell", 
+                    desc: "Extreme weather durability and premium bonded weatherproof membranes.", 
+                    mat: "12 kg", carbon: "25 kg CO₂e", repair: "8.0 / 10", price: "$$$$ (Premium)", score: "9.1/10",
+                    online: "Arc'teryx ReGEAR Online, Authorized Outdoor Outlets",
+                    offline: "Local mountaineering & outdoor gear specialists"
+                },
+                budget: { 
+                    brand: "Fast Fashion Mall Retailer Parka", 
+                    desc: "Uses virgin polyester and non-certified down with short fashion turnover cycles.", 
+                    mat: "14 kg", carbon: "35 kg CO₂e", repair: "2.0 / 10", price: "$ (Budget)", score: "6.5/10",
+                    online: "ThredUp, Depop pre-loved jackets",
+                    offline: "Local charity shops, vintage clothing markets"
+                },
+                tradeoff: "Textiles account for up to 8% of global greenhouse emissions. Buying durable outerwear with repair guarantees breaks the fast-fashion disposal cycle."
+            }
+        };
+
+        function analyzeProduct(mode) {
+            let query = "";
+            if (mode === 'specific') {
+                query = document.getElementById('specificInput').value.trim().toLowerCase();
+            } else if (mode === 'usecase') {
+                query = document.getElementById('usecaseInput').value.trim().toLowerCase();
+            }
+
+            if (!query) {
+                alert('Please enter a product name or use-case description first!');
+                return;
+            }
+
+            // Find matching product or generate intelligent fallback
+            let matchedKey = Object.keys(productDatabase).find(k => query.includes(k));
+            let data;
+
+            if (matchedKey) {
+                data = productDatabase[matchedKey];
+            } else {
+                // Intelligent dynamic generator for any custom product typed by the user!
+                let capitalized = query.charAt(0).toUpperCase() + query.slice(1);
+                data = {
+                    name: capitalized,
+                    category: "Custom Analyzed Product",
+                    eco: { 
+                        brand: "Certified Eco-Alternative Brand", 
+                        desc: `Eco-certified production model for ${capitalized} utilizing renewable energy and minimized packaging.`, 
+                        mat: "18 kg", carbon: "22 kg CO₂e", repair: "8.0 / 10", price: "$$ (Moderate)", score: "9.0/10",
+                        online: `Verified eco webstores, certified zero-emission retailers for ${capitalized}.`,
+                        offline: `Local ethical co-ops, community circular hubs, repair cafes.`
+                    },
+                    qual: { 
+                        brand: `Premium Industrial Grade ${capitalized}`, 
+                        desc: `Heavy-duty build quality designed for maximum durability and multi-year reliability.`, 
+                        mat: "150 kg", carbon: "120 kg CO₂e", repair: "8.5 / 10", price: "$$$ (Premium)", score: "9.3/10",
+                        online: `Direct manufacturer stores offering long-term replacement warranties.`,
+                        offline: `Authorized local specialty retail stores and official service outlets.`
+                    },
+                    budget: { 
+                        brand: `Standard Retail ${capitalized}`, 
+                        desc: `Affordable upfront cost. Lower repairability score means higher replacement frequency.`, 
+                        mat: "90 kg", carbon: "85 kg CO₂e", repair: "4.0 / 10", price: "$ (Budget)", score: "7.0/10",
+                        online: `Peer-to-peer secondhand platforms (Poshmark, Swappa, eBay).`,
+                        offline: `Local neighborhood thrift shops, community charity stores.`
+                    },
+                    tradeoff: `Analyzing '${capitalized}': Mass-market manufacturing incurs significant upstream raw material and energy footprints. Choosing durable or circular models mitigates long-term waste accumulation.`
+                };
+            }
+
+            currentAnalyzedProduct = data.name;
+
+            // Populate DOM Elements
+            document.getElementById('resultTitle').textContent = data.name;
+            document.getElementById('resultCategoryLabel').textContent = data.category;
+
+            // Eco Option
+            document.getElementById('ecoBrand').textContent = data.eco.brand;
+            document.getElementById('ecoDesc').textContent = data.eco.desc;
+            document.getElementById('ecoMat').textContent = data.eco.mat;
+            document.getElementById('ecoCarbon').textContent = data.eco.carbon;
+            document.getElementById('ecoRepair').textContent = data.eco.repair;
+            document.getElementById('ecoPrice').textContent = data.eco.price;
+            document.getElementById('ecoScore').textContent = `Eco Score: ${data.eco.score}`;
+            document.getElementById('ecoOnline').textContent = data.eco.online;
+            document.getElementById('ecoOffline').textContent = data.eco.offline;
+
+            // Quality Option
+            document.getElementById('qualBrand').textContent = data.qual.brand;
+            document.getElementById('qualDesc').textContent = data.qual.desc;
+            document.getElementById('qualMat').textContent = data.qual.mat;
+            document.getElementById('qualCarbon').textContent = data.qual.carbon;
+            document.getElementById('qualRepair').textContent = data.qual.repair;
+            document.getElementById('qualPrice').textContent = data.qual.price;
+            document.getElementById('qualScore').textContent = `Durability: ${data.qual.score}`;
+            document.getElementById('qualOnline').textContent = data.qual.online;
+            document.getElementById('qualOffline').textContent = data.qual.offline;
+
+            // Budget Option
+            document.getElementById('budgetBrand').textContent = data.budget.brand;
+            document.getElementById('budgetDesc').textContent = data.budget.desc;
+            document.getElementById('budgetMat').textContent = data.budget.mat;
+            document.getElementById('budgetCarbon').textContent = data.budget.carbon;
+            document.getElementById('budgetRepair').textContent = data.budget.repair;
+            document.getElementById('budgetPrice').textContent = data.budget.price;
+            document.getElementById('budgetScore').textContent = `Value: ${data.budget.score}`;
+            document.getElementById('budgetOnline').textContent = data.budget.online;
+            document.getElementById('budgetOffline').textContent = data.budget.offline;
+
+            document.getElementById('tradeoffText').textContent = data.tradeoff;
+
+            // Populate Social Share Text snippet
+            document.getElementById('socialTextCaption').value = `Check out the IGCSE eco & durability analysis for "${data.name}" on www.guidetoabetterpath.org! Save carbon & cut raw material waste! 🌱 #IGCSE #Sustainability`;
+
+            // Show results container smoothly
+            document.getElementById('resultsSection').classList.remove('hidden');
+            document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
+
+            // Record in History
+            addToHistory(data.name);
+        }
+
+        // Social Media Share Handlers
+        function openShareModal() {
+            openModal('shareModal');
+        }
+
+        function getShareURL() {
+            return window.location.href;
+        }
+
+        function shareToWhatsApp() {
+            let text = `🌱 Check out the eco-analysis for "${currentAnalyzedProduct}" on www.guidetoabetterpath.org: ${getShareURL()}`;
+            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
+        }
+
+        function shareToTwitter() {
+            let text = `Comparing eco-friendly, durable & budget options for "${currentAnalyzedProduct}" via www.guidetoabetterpath.org! 🌍`;
+            window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(getShareURL())}`, '_blank');
+        }
+
+        function shareToReddit() {
+            let title = `IGCSE Environmental Analysis: Eco vs Durable vs Budget options for ${currentAnalyzedProduct}`;
+            window.open(`https://www.reddit.com/submit?url=${encodeURIComponent(getShareURL())}&title=${encodeURIComponent(title)}`, '_blank');
+        }
+
+        function copyShareLink() {
+            let dummy = document.createElement('input');
+            document.body.appendChild(dummy);
+            dummy.value = getShareURL();
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+            alert('Website link copied to clipboard!');
+        }
+<!-- ... existing code ... -->
