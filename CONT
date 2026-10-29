@@ -1,31 +1,275 @@
-<!-- ... existing code ... -->
+<!DOCTYPE html>
+<html lang="en" data-theme="forest">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EthicalShop Guide | www.guidetoabetterpath.org</title>
+    <!-- Tailwind CSS for modern layout styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for crisp modern icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Theme Palettes */
+        :root {
+            --bg-main: #0f172a;
+            --bg-card: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-primary: #10b981;
+            --accent-secondary: #059669;
+            --border-color: #334155;
+        }
+        [data-theme="light"] {
+            --bg-main: #f1f5f9;
+            --bg-card: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --accent-primary: #059669;
+            --accent-secondary: #047857;
+            --border-color: #cbd5e1;
+        }
+        [data-theme="cyber"] {
+            --bg-main: #030712;
+            --bg-card: #111827;
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+            --accent-primary: #8b5cf6;
+            --accent-secondary: #7c3aed;
+            --border-color: #374151;
+        }
+        [data-theme="sunset"] {
+            --bg-main: #181211;
+            --bg-card: #271d1a;
+            --text-main: #fef2f2;
+            --text-muted: #a8a29e;
+            --accent-primary: #f97316;
+            --accent-secondary: #ea580c;
+            --border-color: #44322d;
+        }
+        [data-theme="ocean"] {
+            --bg-main: #082f49;
+            --bg-card: #0c4a6e;
+            --text-main: #f0f9ff;
+            --text-muted: #7dd3fc;
+            --accent-primary: #0ea5e9;
+            --accent-secondary: #0284c7;
+            --border-color: #0369a1;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .custom-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .custom-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+        .btn-primary {
+            background-color: var(--accent-primary);
+            color: #ffffff;
+            transition: background-color 0.2s ease;
+        }
+        .btn-primary:hover {
+            background-color: var(--accent-secondary);
+        }
+        .accent-text { color: var(--accent-primary); }
+        
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.15;
+        }
+        .app-container { position: relative; z-index: 10; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+    <canvas id="bg-canvas"></canvas>
+
+    <div class="app-container flex flex-col min-h-screen">
+        <!-- Top Navbar -->
+        <header class="border-b border-slate-700 bg-slate-900/80 backdrop-blur-md sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl flex items-center justify-center btn-primary font-bold text-lg shadow-lg">
+                        <i class="fa-solid fa-earth-americas"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs uppercase tracking-widest text-emerald-400 font-semibold">www.guidetoabetterpath.org</span>
+                        <h1 class="text-lg font-bold tracking-tight">EthicalShop Guide</h1>
+                    </div>
+                </div>
+
+                <!-- Navigation Controls -->
+                <div class="flex items-center space-x-3 flex-wrap">
+                    <button onclick="openModal('profileModal')" class="px-3 py-1.5 rounded-lg border border-slate-600 text-sm flex items-center space-x-2 hover:bg-slate-800 transition">
+                        <i class="fa-solid fa-user-gear accent-text"></i>
+                        <span id="navProfileName" class="hidden sm:inline">Profile</span>
+                    </button>
                     <button onclick="openModal('historyModal')" class="px-3 py-1.5 rounded-lg border border-slate-600 text-sm flex items-center space-x-2 hover:bg-slate-800 transition">
                         <i class="fa-solid fa-clock-rotate-left accent-text"></i>
                         <span>History (<span id="historyCount">0</span>)</span>
                     </button>
                     <select id="themeSelector" onchange="changeTheme(this.value)" class="bg-slate-800 border border-slate-600 text-sm rounded-lg px-3 py-1.5 focus:outline-none">
                         <option value="forest">Forest Dark</option>
-                        <option value="cyber">Cyber Neon</option>
                         <option value="light">Minimal Light</option>
+                        <option value="cyber">Cyber Neon</option>
                         <option value="sunset">Sunset Warm</option>
                         <option value="ocean">Ocean Blue</option>
                     </select>
                 </div>
             </div>
         </header>
-<!-- ... existing code ... -->
+
+        <!-- Main Content Area -->
+        <main class="max-w-6xl mx-auto px-4 py-8 flex-grow w-full">
+            
+            <!-- Hero Introduction -->
+            <div class="text-center mb-10">
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-3">Shop Smarter, Live Greener</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">
+                    Compare Online vs. Offline purchasing options categorized into Eco-Friendly, Durable, and Budget tiers. Grounded in IGCSE lifecycle data.
+                </p>
+            </div>
+
+            <!-- Search Mode Tabs -->
+            <div class="flex justify-center mb-6">
+                <div class="inline-flex rounded-xl p-1 bg-slate-800/80 border border-slate-700 shadow-md flex-wrap justify-center">
+                    <button onclick="switchTab('specific')" id="tab-specific" class="px-4 py-2 text-sm font-semibold rounded-lg transition btn-primary shadow m-0.5">
+                        <i class="fa-solid fa-box-open mr-2"></i> Specific Product
+                    </button>
+                    <button onclick="switchTab('category')" id="tab-category" class="px-4 py-2 text-sm font-semibold rounded-lg transition text-slate-300 hover:text-white m-0.5">
+                        <i class="fa-solid fa-layer-group mr-2"></i> Category Browse
+                    </button>
+                    <button onclick="switchTab('usecase')" id="tab-usecase" class="px-4 py-2 text-sm font-semibold rounded-lg transition text-slate-300 hover:text-white m-0.5">
+                        <i class="fa-solid fa-lightbulb mr-2"></i> Need Solver
+                    </button>
+                    <button onclick="switchTab('askus')" id="tab-askus" class="px-4 py-2 text-sm font-semibold rounded-lg transition text-slate-300 hover:text-white m-0.5">
+                        <i class="fa-solid fa-comments mr-2"></i> Ask Us / Inquiry
+                    </button>
+                </div>
+            </div>
+
+            <!-- Search Container Box -->
+            <div class="custom-card rounded-2xl p-6 sm:p-8 shadow-xl mb-10">
+                
+                <!-- Mode 1: Specific Product -->
+                <div id="panel-specific" class="search-panel">
+                    <label class="block text-sm font-medium mb-2">Search or Select a Specific Product:</label>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <div class="relative flex-grow">
+                            <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-slate-400"></i>
+                            <input type="text" id="specificInput" placeholder="e.g. MacBook Pro, Powerless book, iPhone, Running Shoes..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 pl-11 text-sm focus:outline-none focus:border-emerald-500">
+                        </div>
+                        <button onclick="analyzeProduct('specific')" class="btn-primary font-semibold px-6 py-3 rounded-xl text-sm shadow-lg flex items-center justify-center space-x-2">
+                            <span>Analyze Product</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <!-- Quick Chips -->
+                    <div class="mt-4 flex flex-wrap gap-2 items-center">
+                        <span class="text-xs text-slate-400">Try quick search:</span>
+                        <button onclick="quickSearch('MacBook Pro')" class="text-xs px-3 py-1 bg-slate-800 border border-slate-700 rounded-full hover:border-emerald-500 transition">MacBook Pro</button>
+                        <button onclick="quickSearch('Powerless book')" class="text-xs px-3 py-1 bg-slate-800 border border-slate-700 rounded-full hover:border-emerald-500 transition">Powerless book</button>
+                        <button onclick="quickSearch('Running Shoes')" class="text-xs px-3 py-1 bg-slate-800 border border-slate-700 rounded-full hover:border-emerald-500 transition">Running Shoes</button>
+                    </div>
+                </div>
+
+                <!-- Mode 2: Category Search -->
+                <div id="panel-category" class="search-panel hidden">
+                    <label class="block text-sm font-medium mb-2">Select a Product Category:</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+                        <button onclick="selectCategory('Laptops')" class="category-btn p-4 rounded-xl border border-slate-700 bg-slate-900 hover:border-emerald-500 text-left transition flex flex-col justify-between">
+                            <i class="fa-solid fa-laptop text-xl accent-text mb-2"></i>
+                            <span class="font-semibold text-sm">Laptops & Tech</span>
+                        </button>
+                        <button onclick="selectCategory('Books')" class="category-btn p-4 rounded-xl border border-slate-700 bg-slate-900 hover:border-emerald-500 text-left transition flex flex-col justify-between">
+                            <i class="fa-solid fa-book text-xl accent-text mb-2"></i>
+                            <span class="font-semibold text-sm">Books & Media</span>
+                        </button>
+                        <button onclick="selectCategory('Outerwear')" class="category-btn p-4 rounded-xl border border-slate-700 bg-slate-900 hover:border-emerald-500 text-left transition flex flex-col justify-between">
+                            <i class="fa-solid fa-shirt text-xl accent-text mb-2"></i>
+                            <span class="font-semibold text-sm">Outerwear & Clothes</span>
+                        </button>
+                        <button onclick="selectCategory('Footwear')" class="category-btn p-4 rounded-xl border border-slate-700 bg-slate-900 hover:border-emerald-500 text-left transition flex flex-col justify-between">
+                            <i class="fa-solid fa-shoe-prints text-xl accent-text mb-2"></i>
+                            <span class="font-semibold text-sm">Footwear & Shoes</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mode 3: Need Solver -->
+                <div id="panel-usecase" class="search-panel hidden">
+                    <label class="block text-sm font-medium mb-2">What do you need to accomplish?</label>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <div class="relative flex-grow">
+                            <i class="fa-solid fa-circle-question absolute left-4 top-3.5 text-slate-400"></i>
+                            <input type="text" id="usecaseInput" placeholder="e.g. I need something to read engaging young adult fantasy stories..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 pl-11 text-sm focus:outline-none focus:border-emerald-500">
+                        </div>
+                        <button onclick="analyzeProduct('usecase')" class="btn-primary font-semibold px-6 py-3 rounded-xl text-sm shadow-lg flex items-center justify-center space-x-2">
+                            <span>Find Solutions</span>
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mode 4: Ask Us / Inquiry -->
+                <div id="panel-askus" class="search-panel hidden">
+                    <label class="block text-sm font-medium mb-2">Ask a custom lifecycle or purchasing question:</label>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <div class="relative flex-grow">
+                            <i class="fa-solid fa-comment-dots absolute left-4 top-3.5 text-slate-400"></i>
+                            <input type="text" id="askusInput" placeholder="e.g. Is buying online better for carbon emissions than offline retail?" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 pl-11 text-sm focus:outline-none focus:border-emerald-500">
+                        </div>
+                        <button onclick="submitAskUs()" class="btn-primary font-semibold px-6 py-3 rounded-xl text-sm shadow-lg flex items-center justify-center space-x-2">
+                            <span>Submit Question</span>
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div id="askUsResponseContainer" class="mt-4 hidden bg-slate-900/60 p-4 rounded-xl border border-slate-800 text-sm leading-relaxed text-slate-300"></div>
+                </div>
+
+                <!-- Filter Option: Second-hand Checkbox -->
+                <div class="mt-6 pt-4 border-t border-slate-800 flex items-center space-x-3">
+                    <input type="checkbox" id="includeSecondHand" class="w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500 bg-slate-900 border-slate-700">
+                    <label for="includeSecondHand" class="text-sm text-slate-300 cursor-pointer select-none">
+                        Include Second-Hand / Refurbished Items in Results
+                    </label>
+                </div>
+
+            </div>
+
             <!-- Results Output Section -->
             <div id="resultsSection" class="hidden">
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 pb-4 border-b border-slate-700 gap-4">
                     <div>
                         <span class="text-xs font-semibold uppercase tracking-wider text-emerald-400" id="resultCategoryLabel">Product Analysis</span>
-                        <h3 class="text-2xl font-bold" id="resultTitle">MacBook Pro 14</h3>
+                        <h3 class="text-2xl font-bold" id="resultTitle">Product Name</h3>
                     </div>
                     <div class="flex items-center space-x-3">
-                        <button onclick="openShareModal()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-sm flex items-center space-x-2 font-semibold shadow-lg transition">
-                            <i class="fa-solid fa-share-nodes"></i>
-                            <span>Share Analysis</span>
-                        </button>
                         <button onclick="saveToWishlist()" id="saveWishlistBtn" class="px-4 py-2 bg-slate-800 border border-slate-600 rounded-xl text-sm flex items-center space-x-2 hover:border-emerald-500 transition">
                             <i class="fa-regular fa-bookmark"></i>
                             <span>Save Item</span>
@@ -34,154 +278,51 @@
                 </div>
 
                 <!-- Tri-Tier Recommendations Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                    
-                    <!-- Option 1: Eco-Friendly -->
-                    <div class="custom-card rounded-2xl p-6 relative flex flex-col justify-between border-t-4 border-emerald-500">
-                        <div>
-                            <div class="flex justify-between items-start mb-3">
-                                <span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-xs px-2.5 py-1 rounded-full font-semibold">
-                                    <i class="fa-solid fa-leaf mr-1"></i> Eco-Friendly
-                                </span>
-                                <span class="text-xs text-slate-400 font-mono" id="ecoScore">Eco Score: 9/10</span>
-                            </div>
-                            <h4 class="text-lg font-bold mb-1" id="ecoBrand">Refurbished / Circular Brand</h4>
-                            <p class="text-slate-400 text-xs mb-4" id="ecoDesc">Maximizes lifecycle extension with 100% recycled aluminum chassis and certified zero-waste refurbishment.</p>
-                            
-                            <!-- Environmental Metrics -->
-                            <div class="bg-slate-900/60 rounded-xl p-3 text-xs space-y-2 mb-4 border border-slate-800">
-                                <div class="flex justify-between">
-                                    <span class="text-slate-400">Raw Material Backpack:</span>
-                                    <span class="font-mono font-semibold text-emerald-400" id="ecoMat">12 kg</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="text-slate-400">Carbon Footprint:</span>
-                                    <span class="font-mono font-semibold text-emerald-400" id="ecoCarbon">45 kg CO₂e</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="text-slate-400">Repairability:</span>
-                                    <span class="font-mono font-semibold text-emerald-400" id="ecoRepair">8.5 / 10</span>
-                                </div>
-                            </div>
-
-                            <!-- Online & Offline Access Options -->
-                            <div class="space-y-2 mb-4 text-xs">
-                                <div class="p-2.5 rounded-xl bg-slate-900/40 border border-slate-800">
-                                    <span class="font-semibold text-emerald-400 block mb-0.5"><i class="fa-solid fa-globe mr-1"></i> Online Options:</span>
-                                    <span class="text-slate-300" id="ecoOnline">Certified refurbishers (BackMarket, Refurbished Apple Store), circular brand webstores.</span>
-                                </div>
-                                <div class="p-2.5 rounded-xl bg-slate-900/40 border border-slate-800">
-                                    <span class="font-semibold text-emerald-400 block mb-0.5"><i class="fa-solid fa-store mr-1"></i> Offline & Local Options:</span>
-                                    <span class="text-slate-300" id="ecoOffline">Local Repair Cafes, certified tech refurbishers, electronics reuse centers.</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pt-4 border-t border-slate-800 flex justify-between items-center">
-                            <span class="text-xs text-emerald-400 font-medium" id="ecoPrice">$$$ (Moderate)</span>
-                            <button onclick="alert('Redirecting to verified certified sustainable seller partner.')" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-xs font-semibold transition">
-                                View Option <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Option 2: High Quality / Durability -->
-                    <div class="custom-card rounded-2xl p-6 relative flex flex-col justify-between border-t-4 border-blue-500">
-                        <div>
-                            <div class="flex justify-between items-start mb-3">
-                                <span class="bg-blue-500/10 text-blue-400 border border-blue-500/30 text-xs px-2.5 py-1 rounded-full font-semibold">
-                                    <i class="fa-solid fa-shield-halved mr-1"></i> High Quality / BIFL
-                                </span>
-                                <span class="text-xs text-slate-400 font-mono" id="qualScore">Durability: 9.5/10</span>
-                            </div>
-                            <h4 class="text-lg font-bold mb-1" id="qualBrand">Premium Long-Lasting Standard</h4>
-                            <p class="text-slate-400 text-xs mb-4" id="qualDesc">Designed for 7+ years of heavy use with modular components, high-grade materials, and long-term warranty support.</p>
-                            
-                            <!-- Environmental Metrics -->
-                            <div class="bg-slate-900/60 rounded-xl p-3 text-xs space-y-2 mb-4 border border-slate-800">
-                                <div class="flex justify-between">
-                                    <span class="text-slate-400">Raw Material Backpack:</span>
-                                    <span class="font-mono font-semibold text-blue-400" id="qualMat">350 kg</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="text-slate-400">Carbon Footprint:</span>
-                                    <span class="font-mono font-semibold text-blue-400" id="qualCarbon">280 kg CO₂e</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="text-slate-400">Repairability:</span>
-                                    <span class="font-mono font-semibold text-blue-400" id="qualRepair">9.0 / 10</span>
-                                </div>
-                            </div>
-
-                            <!-- Online & Offline Access Options -->
-                            <div class="space-y-2 mb-4 text-xs">
-                                <div class="p-2.5 rounded-xl bg-slate-900/40 border border-slate-800">
-                                    <span class="font-semibold text-blue-400 block mb-0.5"><i class="fa-solid fa-globe mr-1"></i> Online Options:</span>
-                                    <span class="text-slate-300" id="qualOnline">Official manufacturer direct, certified durability retailers.</span>
-                                </div>
-                                <div class="p-2.5 rounded-xl bg-slate-900/40 border border-slate-800">
-                                    <span class="font-semibold text-blue-400 block mb-0.5"><i class="fa-solid fa-store mr-1"></i> Offline & Local Options:</span>
-                                    <span class="text-slate-300" id="qualOffline">Authorized brand service centers, flagship stores, local hardware specialists.</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pt-4 border-t border-slate-800 flex justify-between items-center">
-                            <span class="text-xs text-blue-400 font-medium" id="qualPrice">$$$$ (Premium)</span>
-                            <button onclick="alert('Viewing official manufacturer high-durability listing.')" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-semibold transition">
-                                View Option <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Option 3: Budget / Value -->
-                    <div class="custom-card rounded-2xl p-6 relative flex flex-col justify-between border-t-4 border-amber-500">
-                        <div>
-                            <div class="flex justify-between items-start mb-3">
-                                <span class="bg-amber-500/10 text-amber-400 border border-amber-500/30 text-xs px-2.5 py-1 rounded-full font-semibold">
-                                    <i class="fa-solid fa-tag mr-1"></i> Budget / Value
-                                </span>
-                                <span class="text-xs text-slate-400 font-mono" id="budgetScore">Value: 8.5/10</span>
-                            </div>
-                            <h4 class="text-lg font-bold mb-1" id="budgetBrand">Affordable Standard Model</h4>
-                            <p class="text-slate-400 text-xs mb-4" id="budgetDesc">Cost-effective alternative. Note: Shorter replacement cycle means higher long-term electronic waste impact.</p>
-                            
-                            <!-- Environmental Metrics -->
-                            <div class="bg-slate-900/60 rounded-xl p-3 text-xs space-y-2 mb-4 border border-slate-800">
-                                <div class="flex justify-between">
-                                    <span class="text-slate-400">Raw Material Backpack:</span>
-                                    <span class="font-mono font-semibold text-amber-400" id="budgetMat">220 kg</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="text-slate-400">Carbon Footprint:</span>
-                                    <span class="font-mono font-semibold text-amber-400" id="budgetCarbon">190 kg CO₂e</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="text-slate-400">Repairability:</span>
-                                    <span class="font-mono font-semibold text-amber-400" id="budgetRepair">4.0 / 10</span>
-                                </div>
-                            </div>
-
-                            <!-- Online & Offline Access Options -->
-                            <div class="space-y-2 mb-4 text-xs">
-                                <div class="p-2.5 rounded-xl bg-slate-900/40 border border-slate-800">
-                                    <span class="font-semibold text-amber-400 block mb-0.5"><i class="fa-solid fa-globe mr-1"></i> Online Options:</span>
-                                    <span class="text-slate-300" id="budgetOnline">Online peer-to-peer marketplaces (eBay, Swappa), value clearance webstores.</span>
-                                </div>
-                                <div class="p-2.5 rounded-xl bg-slate-900/40 border border-slate-800">
-                                    <span class="font-semibold text-amber-400 block mb-0.5"><i class="fa-solid fa-store mr-1"></i> Offline & Local Options:</span>
-                                    <span class="text-slate-300" id="budgetOffline">Local thrift shops, community charity stores, local classifieds pickups.</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pt-4 border-t border-slate-800 flex justify-between items-center">
-                            <span class="text-xs text-amber-400 font-medium" id="budgetPrice">$ (Budget)</span>
-                            <button onclick="alert('Viewing retail value marketplace listing.')" class="px-3 py-1.5 bg-amber-600 hover:bg-amber-500 text-white rounded-lg text-xs font-semibold transition">
-                                View Option <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
-                            </button>
-                        </div>
-                    </div>
-
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8" id="tiersGrid">
+                    <!-- Cards injected dynamically -->
                 </div>
-<!-- ... existing code ... -->
+
+                <!-- IGCSE Environmental Impact Trade-off Card -->
+                <div class="custom-card rounded-2xl p-6 bg-slate-900/40">
+                    <h5 class="text-sm font-semibold uppercase tracking-wider text-emerald-400 mb-2 flex items-center">
+                        <i class="fa-solid fa-scale-balanced mr-2"></i> IGCSE ESS & Environmental Trade-Off Analysis
+                    </h5>
+                    <p class="text-sm text-slate-300 leading-relaxed" id="tradeoffText">
+                        Trade-off analysis details...
+                    </p>
+                </div>
+
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="border-t border-slate-800 bg-slate-900/80 py-6 mt-12 text-center text-xs text-slate-400">
+            <p>www.guidetoabetterpath.org &bull; IGCSE Environmental Systems & Sustainable Consumer Project</p>
+            <p class="mt-1 text-slate-500">Data modeled from UNEP Global Resources Outlook & UNCTAD Reports</p>
+        </footer>
+    </div>
+
+    <!-- Profile Modal -->
+    <div id="profileModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="custom-card rounded-2xl max-w-md w-full p-6 bg-slate-900">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-bold">User Profile Settings</h3>
+                <button onclick="closeModal('profileModal')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="space-y-4 text-sm">
+                <div>
+                    <label class="block text-slate-400 mb-1">Your Name / Alias</label>
+                    <input type="text" id="profileNameInput" value="Student Researcher" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2">
+                </div>
+                <div class="pt-2 flex justify-end space-x-3">
+                    <button onclick="closeModal('profileModal')" class="px-4 py-2 bg-slate-800 rounded-xl">Cancel</button>
+                    <button onclick="saveProfile()" class="btn-primary px-4 py-2 rounded-xl font-semibold">Save Profile</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- History / Wishlist Modal -->
     <div id="historyModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="custom-card rounded-2xl max-w-lg w-full p-6 bg-slate-900 max-h-[80vh] flex flex-col">
@@ -199,300 +340,311 @@
         </div>
     </div>
 
-    <!-- Social Media Sharing Modal -->
-    <div id="shareModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="custom-card rounded-2xl max-w-md w-full p-6 bg-slate-900">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-lg font-bold"><i class="fa-solid fa-share-nodes text-emerald-400 mr-2"></i> Share Product Analysis</h3>
-                <button onclick="closeModal('shareModal')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <p class="text-xs text-slate-400 mb-4">Spread eco-awareness by sharing this lifecycle comparison with friends or social channels.</p>
-            
-            <div class="grid grid-cols-2 gap-3 mb-4 text-xs font-semibold">
-                <button onclick="shareToWhatsApp()" class="p-3 bg-emerald-700/80 hover:bg-emerald-600 rounded-xl flex items-center justify-center space-x-2 text-white transition">
-                    <i class="fa-brands fa-whatsapp text-lg"></i>
-                    <span>WhatsApp</span>
-                </button>
-                <button onclick="shareToTwitter()" class="p-3 bg-slate-800 border border-slate-700 hover:border-emerald-500 rounded-xl flex items-center justify-center space-x-2 text-white transition">
-                    <i class="fa-brands fa-x-twitter text-lg"></i>
-                    <span>Twitter / X</span>
-                </button>
-                <button onclick="shareToReddit()" class="p-3 bg-orange-700/80 hover:bg-orange-600 rounded-xl flex items-center justify-center space-x-2 text-white transition">
-                    <i class="fa-brands fa-reddit text-lg"></i>
-                    <span>Reddit</span>
-                </button>
-                <button onclick="copyShareLink()" class="p-3 bg-slate-800 border border-slate-700 hover:border-emerald-500 rounded-xl flex items-center justify-center space-x-2 text-white transition">
-                    <i class="fa-solid fa-link text-lg"></i>
-                    <span>Copy Link</span>
-                </button>
-            </div>
-
-            <!-- Pre-formatted social snippet -->
-            <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 mb-4">
-                <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Copy Caption for Instagram / TikTok:</label>
-                <textarea id="socialTextCaption" readonly class="w-full bg-transparent text-xs text-emerald-300 font-mono resize-none h-16 focus:outline-none"></textarea>
-            </div>
-
-            <div class="flex justify-end">
-                <button onclick="closeModal('shareModal')" class="px-4 py-2 bg-slate-800 rounded-xl text-xs">Close</button>
-            </div>
-        </div>
-    </div>
-
     <!-- Interactive Script Engine -->
     <script>
-        // Global State & LocalStorage
-        let userProfile = JSON.parse(localStorage.getItem('betterpath_profile')) || { name: 'Student Researcher', priority: 'Zero Waste' };
+        let userProfile = JSON.parse(localStorage.getItem('betterpath_profile')) || { name: 'Student Researcher' };
         let searchHistory = JSON.parse(localStorage.getItem('betterpath_history')) || [];
         let wishlist = JSON.parse(localStorage.getItem('betterpath_wishlist')) || [];
-        let currentAnalyzedProduct = "";
 
-        // Initialize UI
         document.getElementById('navProfileName').textContent = userProfile.name;
         document.getElementById('profileNameInput').value = userProfile.name;
         updateHistoryCount();
-<!-- ... existing code ... -->
-        // Database of Known Products + Intelligent Dynamic Fallback Analyzer
+
+        // Canvas Particles
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        for (let i = 0; i < 30; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 2 + 1,
+                speedX: (Math.random() - 0.5) * 0.4,
+                speedY: (Math.random() - 0.5) * 0.4
+            });
+        }
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--accent-primary') || '#10b981';
+            ctx.strokeStyle = ctx.fillStyle;
+            particles.forEach((p, index) => {
+                p.x += p.speedX;
+                p.y += p.speedY;
+                if (p.x < 0) p.x = canvas.width;
+                if (p.x > canvas.width) p.x = 0;
+                if (p.y < 0) p.y = canvas.height;
+                if (p.y > canvas.height) p.y = 0;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fill();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        function switchTab(mode) {
+            ['specific', 'category', 'usecase', 'askus'].forEach(m => {
+                document.getElementById(`panel-${m}`).classList.add('hidden');
+                document.getElementById(`tab-${m}`).classList.remove('btn-primary', 'shadow');
+                document.getElementById(`tab-${m}`).classList.add('text-slate-300');
+            });
+            document.getElementById(`panel-${mode}`).classList.remove('hidden');
+            document.getElementById(`tab-${mode}`).classList.add('btn-primary', 'shadow');
+            document.getElementById(`tab-${mode}`).classList.remove('text-slate-300');
+        }
+
+        function quickSearch(q) {
+            document.getElementById('specificInput').value = q;
+            analyzeProduct('specific');
+        }
+        function selectCategory(cat) {
+            document.getElementById('specificInput').value = cat;
+            analyzeProduct('specific');
+        }
+
         const productDatabase = {
             "macbook": {
                 name: "MacBook Pro / Laptop",
                 category: "Laptops & Electronics",
                 eco: { 
-                    brand: "Certified Refurbished Apple / Back Market", 
+                    title: "Eco-Friendly Option",
+                    brand: "Certified Refurbished Laptop", 
+                    carbon: "48 kg CO₂e",
                     desc: "Refurbished units save over 700 kg of raw mineral extraction.", 
-                    mat: "15 kg", carbon: "48 kg CO₂e", repair: "7.5 / 10", price: "$$$ (Moderate)", score: "9.2/10",
-                    online: "BackMarket, Apple Certified Refurbished, Framework Store",
-                    offline: "Local Repair Cafes, certified local IT refitters, campus e-waste hubs"
+                    onlineStore: "Cashify, BackMarket", 
+                    offlineStore: "Local Certified Tech Hubs",
+                    lowestPriceLink: "https://www.cashify.in",
+                    priceTag: "₹38,000",
+                    isSecondHand: true
                 },
                 qual: { 
-                    brand: "Apple MacBook Pro (M-Series)", 
-                    desc: "Exceptional longevity, premium unibody aluminum, 7+ years support.", 
-                    mat: "780 kg", carbon: "320 kg CO₂e", repair: "6.0 / 10", price: "$$$$ (Premium)", score: "9.5/10",
-                    online: "Official Apple Webstore, Authorized Premium Resellers",
-                    offline: "Apple Store, local electronics flagship centers, authorized repair shops"
+                    title: "High Quality / Durable Option",
+                    brand: "Apple MacBook Pro M-Series", 
+                    carbon: "320 kg CO₂e",
+                    desc: "Engineered for 7+ years of longevity with high-grade aluminum unibody.", 
+                    onlineStore: "Apple Official Store", 
+                    offlineStore: "Apple Flagship Stores",
+                    lowestPriceLink: "https://www.apple.com/in",
+                    priceTag: "₹1,49,900",
+                    isSecondHand: false,
+                    bestFor: "Best for Heavy Professional Use & Longevity"
                 },
                 budget: { 
-                    brand: "Used Windows ThinkPad (Refurbished)", 
-                    desc: "High modularity and cheap parts availability, though shorter battery life.", 
-                    mat: "110 kg", carbon: "95 kg CO₂e", repair: "9.0 / 10", price: "$ (Budget)", score: "8.4/10",
-                    online: "eBay Refurbished, Swappa, local university surplus sites",
-                    offline: "Community thrift stores, local secondhand computer markets"
+                    title: "Budget / Value Option",
+                    brand: "Refurbished Corporate ThinkPad", 
+                    carbon: "95 kg CO₂e",
+                    desc: "Cost-effective, highly modular components, and easily upgradable.", 
+                    onlineStore: "Amazon Renewed", 
+                    offlineStore: "Local Computer Markets",
+                    lowestPriceLink: "https://www.amazon.in",
+                    priceTag: "₹18,500",
+                    isSecondHand: true
                 },
-                tradeoff: "Laptops carry massive upstream mineral footprints (lithium, rare earths). Buying certified refurbished eliminates new extraction pressures while offering high performance."
+                tradeoff: "Laptops carry massive upstream mineral footprints. Choosing certified refurbished or modular models drastically reduces e-waste turnover."
             },
-            "iphone": {
-                name: "Smartphone (iPhone / Android)",
-                category: "Smartphones & Mobile",
+            "powerless": {
+                name: "Powerless Book (Lauren Roberts)",
+                category: "Books & Media",
                 eco: { 
-                    brand: "Back Market / Certified Pre-Owned", 
-                    desc: "Extends phone lifespan by 3 years, cutting annual carbon amortization in half.", 
-                    mat: "4 kg", carbon: "18 kg CO₂e", repair: "7.0 / 10", price: "$$ (Affordable)", score: "9.4/10",
-                    online: "Back Market, Gazelle, Fairphone Webstore",
-                    offline: "Local independent mobile repair shops, local circular tech exchanges"
+                    title: "Eco-Friendly Option",
+                    brand: "Digital E-Reader / Library Borrow", 
+                    carbon: "2.1 kg CO₂e",
+                    desc: "Zero paper pulp extraction, zero ink chemicals, and instant digital delivery.", 
+                    onlineStore: "Kindle Store / Google Play Books", 
+                    offlineStorage: "Local Public Library",
+                    lowestPriceLink: "https://www.amazon.in/kindle-dbs/storefront",
+                    priceTag: "₹399 (Digital)",
+                    isSecondHand: false
                 },
                 qual: { 
-                    brand: "Fairphone 5 (Modular)", 
-                    desc: "100% fair trade gold, modular snap-on parts repairable with a standard screwdriver.", 
-                    mat: "65 kg", carbon: "52 kg CO₂e", repair: "10 / 10", price: "$$$ (Moderate)", score: "9.8/10",
-                    online: "Direct Fairphone Store, European FairTrade Outlets",
-                    offline: "Select ethical tech co-ops and sustainability retail hubs"
+                    title: "High Quality / Durable Option",
+                    brand: "Collector's Special Hardcover Edition", 
+                    carbon: "4.5 kg CO₂e",
+                    desc: "Stitched binding and acid-free paper designed to last decades in home collections.", 
+                    onlineStore: "Book Depository / Amazon", 
+                    offlineStore: "Crossword Bookstore",
+                    lowestPriceLink: "https://www.amazon.in",
+                    priceTag: "₹999",
+                    isSecondHand: false,
+                    bestFor: "Best for Collectors & Long-Term Preservation"
                 },
                 budget: { 
-                    brand: "Budget Android Entry Device", 
-                    desc: "Low upfront cost, but uses glued components and shorter software updates leading to e-waste.", 
-                    mat: "70 kg", carbon: "60 kg CO₂e", repair: "3.5 / 10", price: "$ (Budget)", score: "7.2/10",
-                    online: "Amazon Warehouse, Swappa Value Deals",
-                    offline: "Local carrier value outlets, electronics pawnshops"
+                    title: "Budget / Value Option",
+                    brand: "Second-Hand Paperback Copy", 
+                    carbon: "1.2 kg CO₂e",
+                    desc: "Pre-owned paperback circulating locally between readers.", 
+                    onlineStore: "BookChor, ThriftBooks", 
+                    offlineStore: "Local Street Book Stalls",
+                    lowestPriceLink: "https://www.bookchor.com",
+                    priceTag: "₹250",
+                    isSecondHand: true
                 },
-                tradeoff: "Smartphones require ~70kg of raw materials for a 180g device. Choosing modular or pre-owned devices dramatically lowers toxic e-waste."
-            },
-            "shoes": {
-                name: "Running Shoes & Footwear",
-                category: "Footwear & Apparel",
-                eco: { 
-                    brand: "Allbirds / Veja (Bio-Synthetics)", 
-                    desc: "Made with sugarcane EVA midsoles and recycled plastic bottle mesh.", 
-                    mat: "6 kg", carbon: "9 kg CO₂e", repair: "5.0 / 10", price: "$$ (Moderate)", score: "8.9/10",
-                    online: "Veja Online Store, Allbirds Sustainable Webstore",
-                    offline: "Independent eco-shoe boutiques, local sustainable concept stores"
-                },
-                qual: { 
-                    brand: "Danner / Goodyear Welted Boots", 
-                    desc: "Crafted for decades of wear with resoleable stitched rubber outsoles.", 
-                    mat: "18 kg", carbon: "28 kg CO₂e", repair: "9.5 / 10", price: "$$$ (Premium)", score: "9.6/10",
-                    online: "Danner Direct, Goodyear Welted Heritage Outlets",
-                    offline: "Local master cobblers, heritage leather supply shops"
-                },
-                budget: { 
-                    brand: "Fast-Fashion Synthetic Sneakers", 
-                    desc: "Inexpensive petroleum-based foam soles that degrade quickly into microplastics.", 
-                    mat: "8 kg", carbon: "14 kg CO₂e", repair: "1.0 / 10", price: "$ (Budget)", score: "6.0/10",
-                    online: "Poshmark, Mercari, eBay Secondhand",
-                    offline: "Local goodwill stores, neighborhood clothing swaps"
-                },
-                tradeoff: "Footwear relies heavily on synthetic glues and petroleum plastics. Long-lasting resoleable shoes prevent hundreds of pairs from reaching landfills."
-            },
-            "jacket": {
-                name: "Winter Jacket & Outerwear",
-                category: "Apparel & Textiles",
-                eco: { 
-                    brand: "Patagonia Worn Wear / Recycled Down", 
-                    desc: "Lifetime warranty, repair program, and closed-loop recycled polyester.", 
-                    mat: "5 kg", carbon: "12 kg CO₂e", repair: "9.0 / 10", price: "$$$ (Moderate)", score: "9.5/10",
-                    online: "Patagonia Worn Wear, REI Re/Supply",
-                    offline: "Patagonia Retail Stores (Free local repair counter), local thrift hubs"
-                },
-                qual: { 
-                    brand: "Arc'teryx GORE-TEX Shell", 
-                    desc: "Extreme weather durability and premium bonded weatherproof membranes.", 
-                    mat: "12 kg", carbon: "25 kg CO₂e", repair: "8.0 / 10", price: "$$$$ (Premium)", score: "9.1/10",
-                    online: "Arc'teryx ReGEAR Online, Authorized Outdoor Outlets",
-                    offline: "Local mountaineering & outdoor gear specialists"
-                },
-                budget: { 
-                    brand: "Fast Fashion Mall Retailer Parka", 
-                    desc: "Uses virgin polyester and non-certified down with short fashion turnover cycles.", 
-                    mat: "14 kg", carbon: "35 kg CO₂e", repair: "2.0 / 10", price: "$ (Budget)", score: "6.5/10",
-                    online: "ThredUp, Depop pre-loved jackets",
-                    offline: "Local charity shops, vintage clothing markets"
-                },
-                tradeoff: "Textiles account for up to 8% of global greenhouse emissions. Buying durable outerwear with repair guarantees breaks the fast-fashion disposal cycle."
+                tradeoff: "Paper production consumes significant timber and water resources. E-readers amortize carbon across dozens of books, while second-hand paperbacks keep existing books out of landfills."
             }
         };
 
         function analyzeProduct(mode) {
-            let query = "";
-            if (mode === 'specific') {
-                query = document.getElementById('specificInput').value.trim().toLowerCase();
-            } else if (mode === 'usecase') {
-                query = document.getElementById('usecaseInput').value.trim().toLowerCase();
-            }
+            let query = mode === 'specific' ? document.getElementById('specificInput').value.trim().toLowerCase() : document.getElementById('usecaseInput').value.trim().toLowerCase();
+            if (!query) { alert('Please enter a product or use-case!'); return; }
 
-            if (!query) {
-                alert('Please enter a product name or use-case description first!');
-                return;
-            }
-
-            // Find matching product or generate intelligent fallback
             let matchedKey = Object.keys(productDatabase).find(k => query.includes(k));
             let data;
+            let includeSecondHand = document.getElementById('includeSecondHand').checked;
 
             if (matchedKey) {
                 data = productDatabase[matchedKey];
             } else {
-                // Intelligent dynamic generator for any custom product typed by the user!
-                let capitalized = query.charAt(0).toUpperCase() + query.slice(1);
+                let cap = query.charAt(0).toUpperCase() + query.slice(1);
                 data = {
-                    name: capitalized,
-                    category: "Custom Analyzed Product",
-                    eco: { 
-                        brand: "Certified Eco-Alternative Brand", 
-                        desc: `Eco-certified production model for ${capitalized} utilizing renewable energy and minimized packaging.`, 
-                        mat: "18 kg", carbon: "22 kg CO₂e", repair: "8.0 / 10", price: "$$ (Moderate)", score: "9.0/10",
-                        online: `Verified eco webstores, certified zero-emission retailers for ${capitalized}.`,
-                        offline: `Local ethical co-ops, community circular hubs, repair cafes.`
-                    },
-                    qual: { 
-                        brand: `Premium Industrial Grade ${capitalized}`, 
-                        desc: `Heavy-duty build quality designed for maximum durability and multi-year reliability.`, 
-                        mat: "150 kg", carbon: "120 kg CO₂e", repair: "8.5 / 10", price: "$$$ (Premium)", score: "9.3/10",
-                        online: `Direct manufacturer stores offering long-term replacement warranties.`,
-                        offline: `Authorized local specialty retail stores and official service outlets.`
-                    },
-                    budget: { 
-                        brand: `Standard Retail ${capitalized}`, 
-                        desc: `Affordable upfront cost. Lower repairability score means higher replacement frequency.`, 
-                        mat: "90 kg", carbon: "85 kg CO₂e", repair: "4.0 / 10", price: "$ (Budget)", score: "7.0/10",
-                        online: `Peer-to-peer secondhand platforms (Poshmark, Swappa, eBay).`,
-                        offline: `Local neighborhood thrift shops, community charity stores.`
-                    },
-                    tradeoff: `Analyzing '${capitalized}': Mass-market manufacturing incurs significant upstream raw material and energy footprints. Choosing durable or circular models mitigates long-term waste accumulation.`
+                    name: cap,
+                    category: "General Consumer Goods",
+                    eco: { title: "Eco-Friendly Option", brand: `Refurbished / Circular ${cap}`, carbon: "25 kg CO₂e", desc: "Minimized packaging and circular lifecycle maintenance.", onlineStore: "Certified Circular Marketplaces", offlineStore: "Local Eco-Stalls", lowestPriceLink: "https://www.google.com", priceTag: "₹1,200", isSecondHand: true },
+                    qual: { title: "High Quality / Durable Option", brand: `Premium Industrial Standard ${cap}`, carbon: "110 kg CO₂e", desc: "Built with premium reinforced materials for maximum lifecycle duration.", onlineStore: "Brand Official Store", offlineStore: "Authorized Retailers", lowestPriceLink: "https://www.google.com", priceTag: "₹4,500", isSecondHand: false, bestFor: "Best for Maximum Durability & Performance" },
+                    budget: { title: "Budget / Value Option", brand: `Standard Retail ${cap}`, carbon: "75 kg CO₂e", desc: "Affordable upfront pricing with standard short-term warranty.", onlineStore: "Flipkart / Amazon", offlineStore: "Local Supermarkets", lowestPriceLink: "https://www.google.com", priceTag: "₹800", isSecondHand: false },
+                    tradeoff: `Mass-market production of '${cap}' incurs resource extraction pressures. Opting for durable or circular pathways reduces cumulative environmental impact.`
                 };
             }
 
-            currentAnalyzedProduct = data.name;
-
-            // Populate DOM Elements
             document.getElementById('resultTitle').textContent = data.name;
             document.getElementById('resultCategoryLabel').textContent = data.category;
-
-            // Eco Option
-            document.getElementById('ecoBrand').textContent = data.eco.brand;
-            document.getElementById('ecoDesc').textContent = data.eco.desc;
-            document.getElementById('ecoMat').textContent = data.eco.mat;
-            document.getElementById('ecoCarbon').textContent = data.eco.carbon;
-            document.getElementById('ecoRepair').textContent = data.eco.repair;
-            document.getElementById('ecoPrice').textContent = data.eco.price;
-            document.getElementById('ecoScore').textContent = `Eco Score: ${data.eco.score}`;
-            document.getElementById('ecoOnline').textContent = data.eco.online;
-            document.getElementById('ecoOffline').textContent = data.eco.offline;
-
-            // Quality Option
-            document.getElementById('qualBrand').textContent = data.qual.brand;
-            document.getElementById('qualDesc').textContent = data.qual.desc;
-            document.getElementById('qualMat').textContent = data.qual.mat;
-            document.getElementById('qualCarbon').textContent = data.qual.carbon;
-            document.getElementById('qualRepair').textContent = data.qual.repair;
-            document.getElementById('qualPrice').textContent = data.qual.price;
-            document.getElementById('qualScore').textContent = `Durability: ${data.qual.score}`;
-            document.getElementById('qualOnline').textContent = data.qual.online;
-            document.getElementById('qualOffline').textContent = data.qual.offline;
-
-            // Budget Option
-            document.getElementById('budgetBrand').textContent = data.budget.brand;
-            document.getElementById('budgetDesc').textContent = data.budget.desc;
-            document.getElementById('budgetMat').textContent = data.budget.mat;
-            document.getElementById('budgetCarbon').textContent = data.budget.carbon;
-            document.getElementById('budgetRepair').textContent = data.budget.repair;
-            document.getElementById('budgetPrice').textContent = data.budget.price;
-            document.getElementById('budgetScore').textContent = `Value: ${data.budget.score}`;
-            document.getElementById('budgetOnline').textContent = data.budget.online;
-            document.getElementById('budgetOffline').textContent = data.budget.offline;
-
             document.getElementById('tradeoffText').textContent = data.tradeoff;
 
-            // Populate Social Share Text snippet
-            document.getElementById('socialTextCaption').value = `Check out the IGCSE eco & durability analysis for "${data.name}" on www.guidetoabetterpath.org! Save carbon & cut raw material waste! 🌱 #IGCSE #Sustainability`;
+            let tiersGrid = document.getElementById('tiersGrid');
+            let cardsHtml = '';
 
-            // Show results container smoothly
+            [data.eco, data.qual, data.budget].forEach(tier => {
+                if (tier.isSecondHand && !includeSecondHand) return; // Skip if second-hand is excluded
+
+                let bestBadge = tier.bestFor ? `<div class="mb-2"><span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-[11px] px-2.5 py-0.5 rounded-full font-bold"><i class="fa-solid fa-award mr-1"></i> ${tier.bestFor}</span></div>` : '';
+
+                cardsHtml += `
+                    <div class="custom-card rounded-2xl p-6 relative flex flex-col justify-between border-t-4 border-emerald-500">
+                        <div>
+                            ${bestBadge}
+                            <div class="flex justify-between items-start mb-3">
+                                <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">${tier.title}</span>
+                                <span class="text-xs text-slate-300 font-mono bg-slate-900 px-2.5 py-1 rounded-lg border border-slate-700">Carbon: ${tier.carbon}</span>
+                            </div>
+                            <h4 class="text-lg font-bold mb-1">${tier.brand}</h4>
+                            <p class="text-slate-400 text-xs mb-4">${tier.desc}</p>
+                            
+                            <div class="bg-slate-900/80 rounded-xl p-3 text-xs space-y-2 mb-4 border border-slate-800">
+                                <div class="flex items-start space-x-2">
+                                    <i class="fa-solid fa-globe text-emerald-400 mt-0.5"></i>
+                                    <div><strong>Online:</strong> <span class="text-slate-300">${tier.onlineStore}</span></div>
+                                </div>
+                                <div class="flex items-start space-x-2">
+                                    <i class="fa-solid fa-store text-emerald-400 mt-0.5"></i>
+                                    <div><strong>Offline:</strong> <span class="text-slate-300">${tier.offlineStore || 'Local Retail Outlets'}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800 flex justify-between items-center">
+                            <span class="text-sm font-bold text-emerald-400">${tier.priceTag}</span>
+                            <a href="${tier.lowestPriceLink}" target="_blank" class="px-3 py-1.5 btn-primary text-white rounded-lg text-xs font-semibold flex items-center space-x-1">
+                                <span>Lowest Price</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                `;
+            });
+
+            if (!cardsHtml) {
+                cardsHtml = `<div class="col-span-3 text-center py-8 text-slate-400">All matching options are second-hand/refurbished. Please check "Include Second-Hand Items" to view them.</div>`;
+            }
+
+            tiersGrid.innerHTML = cardsHtml;
             document.getElementById('resultsSection').classList.remove('hidden');
             document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
-
-            // Record in History
             addToHistory(data.name);
         }
 
-        // Social Media Share Handlers
-        function openShareModal() {
-            openModal('shareModal');
+        function submitAskUs() {
+            let val = document.getElementById('askusInput').value.trim();
+            if (!val) { alert('Please type a question!'); return; }
+            let resp = document.getElementById('askUsResponseContainer');
+            resp.classList.remove('hidden');
+            resp.innerHTML = `<strong>Inquiry Analysis:</strong> According to UNCTAD and UNEP lifecycle reports, online retail optimizes logistics consolidation but incurs higher packaging waste, whereas physical offline retail eliminates last-mile parcel transport emissions if customers walk or use public transit. For your query ("<em>${val}</em>"), balancing local physical shopping with certified durable goods yields the lowest net carbon impact.`;
         }
 
-        function getShareURL() {
-            return window.location.href;
+        function addToHistory(name) {
+            searchHistory.unshift({ name, time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) });
+            if (searchHistory.length > 10) searchHistory.pop();
+            localStorage.setItem('betterpath_history', JSON.stringify(searchHistory));
+            updateHistoryCount();
         }
 
-        function shareToWhatsApp() {
-            let text = `🌱 Check out the eco-analysis for "${currentAnalyzedProduct}" on www.guidetoabetterpath.org: ${getShareURL()}`;
-            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
+        function updateHistoryCount() {
+            document.getElementById('historyCount').textContent = searchHistory.length;
+            let container = document.getElementById('historyListContainer');
+            if (searchHistory.length === 0 && wishlist.length === 0) {
+                container.innerHTML = `<p class="text-slate-500 text-sm text-center py-6">No recent history or saved items.</p>`;
+                return;
+            }
+            let html = '';
+            if (wishlist.length > 0) {
+                html += `<div class="mb-4"><h4 class="text-xs uppercase text-emerald-400 font-semibold mb-2">Wishlist</h4>`;
+                wishlist.forEach((w, i) => {
+                    html += `<div class="flex justify-between items-center bg-slate-800 p-2 rounded-lg mb-1 text-sm"><span>${w}</span><button onclick="wishlist.splice(${i},1);updateHistoryCount();" class="text-xs text-red-400">Remove</button></div>`;
+                });
+                html += `</div>`;
+            }
+            if (searchHistory.length > 0) {
+                html += `<div><h4 class="text-xs uppercase text-slate-400 font-semibold mb-2">History</h4>`;
+                searchHistory.forEach(h => {
+                    html += `<div class="flex justify-between items-center bg-slate-800/40 p-2 rounded-lg mb-1 text-sm"><span>${h.name}</span><span class="text-xs text-slate-500">${h.time}</span></div>`;
+                });
+                html += `</div>`;
+            }
+            container.innerHTML = html;
         }
 
-        function shareToTwitter() {
-            let text = `Comparing eco-friendly, durable & budget options for "${currentAnalyzedProduct}" via www.guidetoabetterpath.org! 🌍`;
-            window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(getShareURL())}`, '_blank');
+        function saveToWishlist() {
+            let t = document.getElementById('resultTitle').textContent;
+            if (!wishlist.includes(t)) {
+                wishlist.push(t);
+                localStorage.setItem('betterpath_wishlist', JSON.stringify(wishlist));
+                updateHistoryCount();
+                alert(`Saved "${t}" to wishlist!`);
+            }
         }
 
-        function shareToReddit() {
-            let title = `IGCSE Environmental Analysis: Eco vs Durable vs Budget options for ${currentAnalyzedProduct}`;
-            window.open(`https://www.reddit.com/submit?url=${encodeURIComponent(getShareURL())}&title=${encodeURIComponent(title)}`, '_blank');
+        function clearHistory() {
+            searchHistory = []; wishlist = [];
+            localStorage.removeItem('betterpath_history');
+            localStorage.removeItem('betterpath_wishlist');
+            updateHistoryCount();
         }
 
-        function copyShareLink() {
-            let dummy = document.createElement('input');
-            document.body.appendChild(dummy);
-            dummy.value = getShareURL();
-            dummy.select();
-            document.execCommand('copy');
-            document.body.removeChild(dummy);
-            alert('Website link copied to clipboard!');
+        function saveProfile() {
+            userProfile.name = document.getElementById('profileNameInput').value || 'Student Researcher';
+            localStorage.setItem('betterpath_profile', JSON.stringify(userProfile));
+            document.getElementById('navProfileName').textContent = userProfile.name;
+            closeModal('profileModal');
+            alert('Profile saved!');
         }
-<!-- ... existing code ... -->
+
+        function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+        function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+
+        function changeTheme(themeName) {
+            document.documentElement.setAttribute('data-theme', themeName);
+            localStorage.setItem('betterpath_theme', themeName);
+        }
+
+        let savedTheme = localStorage.getItem('betterpath_theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.getElementById('themeSelector').value = savedTheme;
+        }
+    </script>
+</body>
+</html>
