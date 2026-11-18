@@ -1,1 +1,1 @@
-# guidetabetterpath
+# guidetoabetterpath
