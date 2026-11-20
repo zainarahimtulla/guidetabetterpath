@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="matcha">
+<html lang="en" data-theme="colorful-bubbles">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,10 +11,70 @@
     <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Cute & Aesthetic Theme Palettes */
-        :root, [data-theme="matcha"] {
+        /* Theme Variables */
+        :root, [data-theme="colorful-bubbles"] {
+            --bg-main: #050508;
+            --bg-surface: rgba(18, 18, 26, 0.85);
+            --bg-subtle: rgba(28, 28, 40, 0.9);
+            --bg-header: rgba(10, 10, 15, 0.85);
+            --text-main: #ffffff;
+            --text-muted: #a1a1aa;
+            --accent-primary: #ec4899;
+            --accent-secondary: #db2777;
+            --accent-soft: rgba(236, 72, 153, 0.18);
+            --border-color: rgba(255, 255, 255, 0.12);
+        }
+        [data-theme="pastel-shift"] {
+            --bg-main: #fdf4ff;
+            --bg-surface: rgba(255, 255, 255, 0.82);
+            --bg-subtle: rgba(250, 240, 255, 0.88);
+            --bg-header: rgba(255, 255, 255, 0.78);
+            --text-main: #312542;
+            --text-muted: #6b5b82;
+            --accent-primary: #a855f7;
+            --accent-secondary: #9333ea;
+            --accent-soft: rgba(168, 85, 247, 0.14);
+            --border-color: rgba(168, 85, 247, 0.2);
+        }
+        [data-theme="firefly-night"] {
+            --bg-main: #070b19;
+            --bg-surface: rgba(15, 23, 42, 0.85);
+            --bg-subtle: rgba(23, 33, 58, 0.9);
+            --bg-header: rgba(7, 11, 25, 0.85);
+            --text-main: #fefce8;
+            --text-muted: #94a3b8;
+            --accent-primary: #eab308;
+            --accent-secondary: #ca8a04;
+            --accent-soft: rgba(234, 179, 8, 0.18);
+            --border-color: rgba(234, 179, 8, 0.22);
+        }
+        [data-theme="cotton-candy"] {
+            --bg-main: #fdf2f8;
+            --bg-surface: rgba(255, 255, 255, 0.85);
+            --bg-subtle: rgba(240, 249, 255, 0.9);
+            --bg-header: rgba(255, 255, 255, 0.82);
+            --text-main: #33273d;
+            --text-muted: #6b5e7a;
+            --accent-primary: #38bdf8;
+            --accent-secondary: #0284c7;
+            --accent-soft: rgba(56, 189, 248, 0.15);
+            --border-color: rgba(244, 114, 182, 0.25);
+        }
+        [data-theme="cyber-grid"] {
+            --bg-main: #090514;
+            --bg-surface: rgba(20, 12, 40, 0.86);
+            --bg-subtle: rgba(30, 18, 58, 0.9);
+            --bg-header: rgba(9, 5, 20, 0.88);
+            --text-main: #f0f9ff;
+            --text-muted: #a5b4fc;
+            --accent-primary: #06b6d4;
+            --accent-secondary: #0891b2;
+            --accent-soft: rgba(6, 182, 212, 0.18);
+            --border-color: rgba(6, 182, 212, 0.28);
+        }
+        [data-theme="matcha"] {
             --bg-main: #f4f7f2;
-            --bg-surface: #ffffff;
+            --bg-surface: rgba(255, 255, 255, 0.92);
             --bg-subtle: #e9f0e5;
             --bg-header: rgba(255, 255, 255, 0.85);
             --text-main: #243326;
@@ -26,7 +86,7 @@
         }
         [data-theme="blossom"] {
             --bg-main: #fdf5f7;
-            --bg-surface: #ffffff;
+            --bg-surface: rgba(255, 255, 255, 0.92);
             --bg-subtle: #fae8ed;
             --bg-header: rgba(255, 255, 255, 0.85);
             --text-main: #3d242c;
@@ -38,7 +98,7 @@
         }
         [data-theme="lavender"] {
             --bg-main: #f6f4fb;
-            --bg-surface: #ffffff;
+            --bg-surface: rgba(255, 255, 255, 0.92);
             --bg-subtle: #ece7f8;
             --bg-header: rgba(255, 255, 255, 0.85);
             --text-main: #2b243d;
@@ -50,7 +110,7 @@
         }
         [data-theme="peach"] {
             --bg-main: #fdf7f2;
-            --bg-surface: #ffffff;
+            --bg-surface: rgba(255, 255, 255, 0.92);
             --bg-subtle: #faece1;
             --bg-header: rgba(255, 255, 255, 0.85);
             --text-main: #3b291e;
@@ -62,9 +122,9 @@
         }
         [data-theme="light"] {
             --bg-main: #f8fafc;
-            --bg-surface: #ffffff;
+            --bg-surface: rgba(255, 255, 255, 0.95);
             --bg-subtle: #f1f5f9;
-            --bg-header: rgba(255, 255, 255, 0.85);
+            --bg-header: rgba(255, 255, 255, 0.88);
             --text-main: #0f172a;
             --text-muted: #64748b;
             --accent-primary: #0d9488;
@@ -74,9 +134,9 @@
         }
         [data-theme="forest-dark"] {
             --bg-main: #0f172a;
-            --bg-surface: #1e293b;
+            --bg-surface: rgba(30, 41, 59, 0.9);
             --bg-subtle: #0f172a;
-            --bg-header: rgba(15, 23, 42, 0.85);
+            --bg-header: rgba(15, 23, 42, 0.88);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --accent-primary: #10b981;
@@ -84,24 +144,31 @@
             --accent-soft: rgba(16, 185, 129, 0.15);
             --border-color: #334155;
         }
-        [data-theme="starlight-dark"] {
-            --bg-main: #181424;
-            --bg-surface: #231e33;
-            --bg-subtle: #181424;
-            --bg-header: rgba(24, 20, 36, 0.85);
-            --text-main: #f5f2fc;
-            --text-muted: #a69ec2;
-            --accent-primary: #b497f5;
-            --accent-secondary: #9b7ae6;
-            --accent-soft: rgba(180, 151, 245, 0.16);
-            --border-color: #37304f;
+
+        /* Animated Shifting Pastel Gradient Background */
+        @keyframes pastelShiftAnim {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        [data-theme="pastel-shift"] body {
+            background: linear-gradient(-45deg, #ffd6e8, #e5d4ff, #d4f1ff, #dcfce7, #fef3c7);
+            background-size: 400% 400%;
+            animation: pastelShiftAnim 14s ease infinite;
+        }
+
+        [data-theme="cotton-candy"] body {
+            background: linear-gradient(120deg, #fce7f3, #e0f2fe, #f3e8ff, #ffe4e6);
+            background-size: 300% 300%;
+            animation: pastelShiftAnim 18s ease infinite;
         }
 
         body {
             background-color: var(--bg-main);
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
-            transition: background-color 0.35s ease, color 0.35s ease;
+            transition: background-color 0.4s ease, color 0.35s ease;
         }
         h1, h2, h3, h4 {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -113,11 +180,12 @@
         .custom-card {
             background-color: var(--bg-surface);
             border: 1px solid var(--border-color);
+            backdrop-filter: blur(12px);
             transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
         }
         .custom-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.22);
         }
         .subtle-box {
             background-color: var(--bg-subtle);
@@ -159,7 +227,6 @@
             height: 100%;
             pointer-events: none;
             z-index: 0;
-            opacity: 0.22;
         }
         .app-container { position: relative; z-index: 10; }
     </style>
@@ -192,16 +259,22 @@
                         <span>Saved (<span id="historyCount">0</span>)</span>
                     </button>
                     <select id="themeSelector" onchange="changeTheme(this.value)" aria-label="Select Theme" class="theme-input text-sm font-medium rounded-xl px-3 py-1.5 cursor-pointer">
-                        <optgroup label="Cute & Aesthetic">
+                        <optgroup label="Animated & Live Effects">
+                            <option value="colorful-bubbles">Colorful Bubbles (Black)</option>
+                            <option value="pastel-shift">Shifting Pastel Aurora</option>
+                            <option value="firefly-night">Firefly Night Sky</option>
+                            <option value="cotton-candy">Cotton Candy Clouds</option>
+                            <option value="cyber-grid">Neon Cyber Orbs</option>
+                        </optgroup>
+                        <optgroup label="Soft Aesthetic">
                             <option value="matcha">Matcha Cream</option>
                             <option value="blossom">Blossom Pink</option>
                             <option value="lavender">Lavender Mist</option>
                             <option value="peach">Peach Sorbet</option>
                         </optgroup>
-                        <optgroup label="Classic & Dark">
+                        <optgroup label="Classic Modes">
                             <option value="light">Minimal Light</option>
                             <option value="forest-dark">Forest Dark</option>
-                            <option value="starlight-dark">Midnight Starlight</option>
                         </optgroup>
                     </select>
                 </div>
@@ -345,7 +418,7 @@
                     </div>
                 </div>
 
-                <!-- Dynamic Recommendation Cards Grid (Includes Eco-Packaging Box + Tiers) -->
+                <!-- Dynamic Recommendation Cards Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-8" id="tiersGrid">
                     <!-- Cards injected dynamically based on user search -->
                 </div>
@@ -418,10 +491,28 @@
         document.getElementById('profileNameInput').value = userProfile.name;
         updateHistoryCount();
 
-        // Ambient Floating Particles
+        // Dynamic Multi-Theme Canvas Engine (Colorful Bubbles, Fireflies, Pastel Orbs, etc.)
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
+
+        const bubbleColors = [
+            'rgba(255, 105, 180, 0.45)', // Hot Pink
+            'rgba(0, 229, 255, 0.45)',   // Cyan
+            'rgba(179, 136, 255, 0.45)', // Soft Violet
+            'rgba(105, 240, 174, 0.45)', // Mint Green
+            'rgba(255, 215, 64, 0.45)',  // Warm Yellow
+            'rgba(255, 138, 101, 0.45)'  // Coral
+        ];
+
+        const pastelColors = [
+            'rgba(255, 182, 193, 0.5)',
+            'rgba(216, 180, 254, 0.5)',
+            'rgba(165, 243, 252, 0.5)',
+            'rgba(187, 247, 208, 0.5)',
+            'rgba(254, 240, 138, 0.5)'
+        ];
+
         function resizeCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
@@ -429,29 +520,86 @@
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
-        for (let i = 0; i < 28; i++) {
-            particles.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                radius: Math.random() * 3 + 1.5,
-                speedX: (Math.random() - 0.5) * 0.35,
-                speedY: (Math.random() - 0.5) * 0.35
-            });
+        function initParticles() {
+            particles = [];
+            const count = 42;
+            for (let i = 0; i < count; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 24 + 6,
+                    smallRadius: Math.random() * 3.5 + 1.5,
+                    speedX: (Math.random() - 0.5) * 0.6,
+                    speedY: -(Math.random() * 0.8 + 0.25), // Float upward gently
+                    color: bubbleColors[i % bubbleColors.length],
+                    pastelColor: pastelColors[i % pastelColors.length],
+                    phase: Math.random() * Math.PI * 2
+                });
+            }
         }
+        initParticles();
+
         function animateParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--accent-primary') || '#5e8b62';
-            particles.forEach(p => {
-                p.x += p.speedX;
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'colorful-bubbles';
+
+            particles.forEach((p, idx) => {
+                p.phase += 0.02;
+                p.x += p.speedX + Math.sin(p.phase) * 0.3;
                 p.y += p.speedY;
-                if (p.x < 0) p.x = canvas.width;
-                if (p.x > canvas.width) p.x = 0;
-                if (p.y < 0) p.y = canvas.height;
-                if (p.y > canvas.height) p.y = 0;
+
+                if (p.y < -40) {
+                    p.y = canvas.height + 40;
+                    p.x = Math.random() * canvas.width;
+                }
+                if (p.x < -40) p.x = canvas.width + 40;
+                if (p.x > canvas.width + 40) p.x = -40;
+
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fill();
+
+                if (currentTheme === 'colorful-bubbles') {
+                    // Glowing colorful soap bubbles floating on black background
+                    const grad = ctx.createRadialGradient(
+                        p.x - p.radius * 0.3, p.y - p.radius * 0.3, p.radius * 0.1,
+                        p.x, p.y, p.radius
+                    );
+                    grad.addColorStop(0, 'rgba(255, 255, 255, 0.7)');
+                    grad.addColorStop(0.4, p.color);
+                    grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+                    ctx.fillStyle = grad;
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    ctx.strokeStyle = p.color;
+                    ctx.lineWidth = 1.2;
+                    ctx.stroke();
+                } else if (currentTheme === 'pastel-shift' || currentTheme === 'cotton-candy') {
+                    // Soft dreamy pastel orbs
+                    ctx.fillStyle = p.pastelColor;
+                    ctx.arc(p.x, p.y, p.radius * 1.2, 0, Math.PI * 2);
+                    ctx.fill();
+                } else if (currentTheme === 'firefly-night') {
+                    // Twinkling golden fireflies
+                    const glow = 0.4 + Math.sin(p.phase * 2) * 0.4;
+                    ctx.fillStyle = `rgba(250, 204, 21, ${Math.max(0.1, glow)})`;
+                    ctx.arc(p.x, p.y, p.smallRadius + 1.5, 0, Math.PI * 2);
+                    ctx.fill();
+                } else if (currentTheme === 'cyber-grid') {
+                    // Neon cyan & magenta glowing orbs
+                    ctx.fillStyle = idx % 2 === 0 ? 'rgba(6, 182, 212, 0.35)' : 'rgba(232, 121, 249, 0.35)';
+                    ctx.arc(p.x, p.y, p.radius * 0.75, 0, Math.PI * 2);
+                    ctx.fill();
+                } else {
+                    // Subtle accent particles for classic themes
+                    ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--accent-primary') || '#5e8b62';
+                    ctx.globalAlpha = 0.25;
+                    ctx.arc(p.x, p.y, p.smallRadius, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.globalAlpha = 1;
+                }
             });
+
             requestAnimationFrame(animateParticles);
         }
         animateParticles();
@@ -662,7 +810,6 @@
             const tiersGrid = document.getElementById('tiersGrid');
             let cardsHtml = '';
 
-            // Always put the Eco-Friendly Packaging card first, followed by the 3 pathways
             const cardsList = [data.packagingOption, data.eco, data.qual, data.budget];
 
             cardsList.forEach(tier => {
@@ -714,7 +861,6 @@
             addToHistory(data.name);
         }
 
-        // Re-render immediately if the user toggles the Second-Hand checkbox while results are visible
         document.getElementById('includeSecondHand').addEventListener('change', () => {
             if (!document.getElementById('resultsSection').classList.contains('hidden')) {
                 const activeMode = !document.getElementById('panel-usecase').classList.contains('hidden') ? 'usecase' : 'specific';
