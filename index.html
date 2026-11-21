@@ -1,18 +1,62 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="colorful-bubbles">
+<html lang="en" data-theme="single-orb">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EthicalShop Guide | www.guidetoabetterpath.org</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Theme Variables */
-        :root, [data-theme="colorful-bubbles"] {
+        :root, [data-theme="single-orb"] {
+            --bg-main: #090d16;
+            --bg-surface: rgba(18, 25, 42, 0.85);
+            --bg-subtle: rgba(27, 37, 61, 0.9);
+            --bg-header: rgba(9, 13, 22, 0.85);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-primary: #38bdf8;
+            --accent-secondary: #0284c7;
+            --accent-soft: rgba(56, 189, 248, 0.16);
+            --border-color: rgba(148, 163, 184, 0.2);
+        }
+        [data-theme="waves"] {
+            --bg-main: #062233;
+            --bg-surface: rgba(10, 46, 68, 0.84);
+            --bg-subtle: rgba(14, 62, 90, 0.9);
+            --bg-header: rgba(6, 34, 51, 0.85);
+            --text-main: #f0f9ff;
+            --text-muted: #bae6fd;
+            --accent-primary: #2dd4bf;
+            --accent-secondary: #0d9488;
+            --accent-soft: rgba(45, 212, 191, 0.16);
+            --border-color: rgba(125, 211, 252, 0.25);
+        }
+        [data-theme="falling-leaves"] {
+            --bg-main: #17140f;
+            --bg-surface: rgba(36, 30, 22, 0.86);
+            --bg-subtle: rgba(50, 42, 31, 0.9);
+            --bg-header: rgba(23, 20, 15, 0.86);
+            --text-main: #fef7ed;
+            --text-muted: #d6c3a5;
+            --accent-primary: #f59e0b;
+            --accent-secondary: #d97706;
+            --accent-soft: rgba(245, 158, 11, 0.16);
+            --border-color: rgba(251, 191, 36, 0.22);
+        }
+        [data-theme="cherry-blossoms"] {
+            --bg-main: #1d1118;
+            --bg-surface: rgba(43, 23, 35, 0.85);
+            --bg-subtle: rgba(59, 31, 48, 0.9);
+            --bg-header: rgba(29, 17, 24, 0.86);
+            --text-main: #fdf2f8;
+            --text-muted: #f3c6dc;
+            --accent-primary: #f472b6;
+            --accent-secondary: #db2777;
+            --accent-soft: rgba(244, 114, 182, 0.18);
+            --border-color: rgba(249, 168, 212, 0.24);
+        }
+        [data-theme="colorful-bubbles"] {
             --bg-main: #050508;
             --bg-surface: rgba(18, 18, 26, 0.85);
             --bg-subtle: rgba(28, 28, 40, 0.9);
@@ -22,55 +66,19 @@
             --accent-primary: #ec4899;
             --accent-secondary: #db2777;
             --accent-soft: rgba(236, 72, 153, 0.18);
-            --border-color: rgba(255, 255, 255, 0.12);
+            --border-color: rgba(255, 255, 255, 0.14);
         }
         [data-theme="pastel-shift"] {
             --bg-main: #fdf4ff;
-            --bg-surface: rgba(255, 255, 255, 0.82);
-            --bg-subtle: rgba(250, 240, 255, 0.88);
-            --bg-header: rgba(255, 255, 255, 0.78);
+            --bg-surface: rgba(255, 255, 255, 0.84);
+            --bg-subtle: rgba(250, 240, 255, 0.9);
+            --bg-header: rgba(255, 255, 255, 0.8);
             --text-main: #312542;
             --text-muted: #6b5b82;
             --accent-primary: #a855f7;
             --accent-secondary: #9333ea;
             --accent-soft: rgba(168, 85, 247, 0.14);
-            --border-color: rgba(168, 85, 247, 0.2);
-        }
-        [data-theme="firefly-night"] {
-            --bg-main: #070b19;
-            --bg-surface: rgba(15, 23, 42, 0.85);
-            --bg-subtle: rgba(23, 33, 58, 0.9);
-            --bg-header: rgba(7, 11, 25, 0.85);
-            --text-main: #fefce8;
-            --text-muted: #94a3b8;
-            --accent-primary: #eab308;
-            --accent-secondary: #ca8a04;
-            --accent-soft: rgba(234, 179, 8, 0.18);
-            --border-color: rgba(234, 179, 8, 0.22);
-        }
-        [data-theme="cotton-candy"] {
-            --bg-main: #fdf2f8;
-            --bg-surface: rgba(255, 255, 255, 0.85);
-            --bg-subtle: rgba(240, 249, 255, 0.9);
-            --bg-header: rgba(255, 255, 255, 0.82);
-            --text-main: #33273d;
-            --text-muted: #6b5e7a;
-            --accent-primary: #38bdf8;
-            --accent-secondary: #0284c7;
-            --accent-soft: rgba(56, 189, 248, 0.15);
-            --border-color: rgba(244, 114, 182, 0.25);
-        }
-        [data-theme="cyber-grid"] {
-            --bg-main: #090514;
-            --bg-surface: rgba(20, 12, 40, 0.86);
-            --bg-subtle: rgba(30, 18, 58, 0.9);
-            --bg-header: rgba(9, 5, 20, 0.88);
-            --text-main: #f0f9ff;
-            --text-muted: #a5b4fc;
-            --accent-primary: #06b6d4;
-            --accent-secondary: #0891b2;
-            --accent-soft: rgba(6, 182, 212, 0.18);
-            --border-color: rgba(6, 182, 212, 0.28);
+            --border-color: rgba(168, 85, 247, 0.22);
         }
         [data-theme="matcha"] {
             --bg-main: #f4f7f2;
@@ -83,42 +91,6 @@
             --accent-secondary: #486e4b;
             --accent-soft: rgba(94, 139, 98, 0.14);
             --border-color: #d5e2d0;
-        }
-        [data-theme="blossom"] {
-            --bg-main: #fdf5f7;
-            --bg-surface: rgba(255, 255, 255, 0.92);
-            --bg-subtle: #fae8ed;
-            --bg-header: rgba(255, 255, 255, 0.85);
-            --text-main: #3d242c;
-            --text-muted: #7d5864;
-            --accent-primary: #d96b8a;
-            --accent-secondary: #be5170;
-            --accent-soft: rgba(217, 107, 138, 0.14);
-            --border-color: #f3d1dc;
-        }
-        [data-theme="lavender"] {
-            --bg-main: #f6f4fb;
-            --bg-surface: rgba(255, 255, 255, 0.92);
-            --bg-subtle: #ece7f8;
-            --bg-header: rgba(255, 255, 255, 0.85);
-            --text-main: #2b243d;
-            --text-muted: #675c82;
-            --accent-primary: #8269c7;
-            --accent-secondary: #6950ad;
-            --accent-soft: rgba(130, 105, 199, 0.14);
-            --border-color: #dcd3f2;
-        }
-        [data-theme="peach"] {
-            --bg-main: #fdf7f2;
-            --bg-surface: rgba(255, 255, 255, 0.92);
-            --bg-subtle: #faece1;
-            --bg-header: rgba(255, 255, 255, 0.85);
-            --text-main: #3b291e;
-            --text-muted: #7a6050;
-            --accent-primary: #e07a4f;
-            --accent-secondary: #c76238;
-            --accent-soft: rgba(224, 122, 79, 0.14);
-            --border-color: #f2d8c7;
         }
         [data-theme="light"] {
             --bg-main: #f8fafc;
@@ -144,81 +116,55 @@
             --accent-soft: rgba(16, 185, 129, 0.15);
             --border-color: #334155;
         }
+        [data-theme="custom-gpt"] {
+            --bg-main: var(--custom-bg, #0d1117);
+            --bg-surface: rgba(22, 27, 34, 0.85);
+            --bg-subtle: rgba(33, 38, 45, 0.9);
+            --bg-header: rgba(13, 17, 23, 0.86);
+            --text-main: var(--custom-text, #f0f6fc);
+            --text-muted: #9ca3af;
+            --accent-primary: var(--custom-accent, #22d3ee);
+            --accent-secondary: #0891b2;
+            --accent-soft: rgba(34, 211, 238, 0.16);
+            --border-color: rgba(255, 255, 255, 0.16);
+        }
 
-        /* Animated Shifting Pastel Gradient Background */
         @keyframes pastelShiftAnim {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
         [data-theme="pastel-shift"] body {
             background: linear-gradient(-45deg, #ffd6e8, #e5d4ff, #d4f1ff, #dcfce7, #fef3c7);
             background-size: 400% 400%;
             animation: pastelShiftAnim 14s ease infinite;
         }
 
-        [data-theme="cotton-candy"] body {
-            background: linear-gradient(120deg, #fce7f3, #e0f2fe, #f3e8ff, #ffe4e6);
-            background-size: 300% 300%;
-            animation: pastelShiftAnim 18s ease infinite;
-        }
-
         body {
             background-color: var(--bg-main);
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
-            transition: background-color 0.4s ease, color 0.35s ease;
+            transition: background-color 0.35s ease, color 0.35s ease;
         }
-        h1, h2, h3, h4 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-        .theme-header {
-            background-color: var(--bg-header);
-            border-bottom: 1px solid var(--border-color);
-        }
+        h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .theme-header { background-color: var(--bg-header); border-bottom: 1px solid var(--border-color); }
         .custom-card {
             background-color: var(--bg-surface);
             border: 1px solid var(--border-color);
             backdrop-filter: blur(12px);
-            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        .custom-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.22);
-        }
-        .subtle-box {
-            background-color: var(--bg-subtle);
-            border: 1px solid var(--border-color);
-        }
-        .theme-input {
-            background-color: var(--bg-subtle);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-        }
-        .theme-input:focus {
-            outline: none;
-            border-color: var(--accent-primary);
-        }
-        .btn-primary {
-            background-color: var(--accent-primary);
-            color: #ffffff;
-            transition: background-color 0.2s ease, transform 0.15s ease;
-        }
-        .btn-primary:hover {
-            background-color: var(--accent-secondary);
-        }
+        .custom-card:hover { transform: translateY(-2px); }
+        .subtle-box { background-color: var(--bg-subtle); border: 1px solid var(--border-color); }
+        .theme-input { background-color: var(--bg-subtle); border: 1px solid var(--border-color); color: var(--text-main); }
+        .theme-input:focus { outline: none; border-color: var(--accent-primary); }
+        .btn-primary { background-color: var(--accent-primary); color: #ffffff; transition: background-color 0.2s ease; }
+        .btn-primary:hover { background-color: var(--accent-secondary); }
         .accent-text { color: var(--accent-primary); }
         .muted-text { color: var(--text-muted); }
-        .accent-badge {
-            background-color: var(--accent-soft);
-            color: var(--accent-primary);
-            border: 1px solid var(--border-color);
-        }
-        .card-top-accent {
-            border-top: 4px solid var(--accent-primary);
-        }
-        
+        .accent-badge { background-color: var(--accent-soft); color: var(--accent-primary); border: 1px solid var(--border-color); }
+        .card-top-accent { border-top: 4px solid var(--accent-primary); }
+
         #bg-canvas {
             position: fixed;
             top: 0;
@@ -248,8 +194,11 @@
                     </div>
                 </div>
 
-                <!-- Navigation Controls -->
                 <div class="flex items-center space-x-2.5 flex-wrap">
+                    <button onclick="openModal('gptBgModal')" class="px-3 py-1.5 rounded-xl subtle-box text-sm font-medium flex items-center space-x-2 hover:opacity-85 transition">
+                        <i class="fa-solid fa-wand-magic-sparkles accent-text"></i>
+                        <span>ChatGPT BG Maker</span>
+                    </button>
                     <button onclick="openModal('profileModal')" class="px-3 py-1.5 rounded-xl subtle-box text-sm font-medium flex items-center space-x-2 hover:opacity-85 transition">
                         <i class="fa-solid fa-user-astronaut accent-text"></i>
                         <span id="navProfileName" class="hidden sm:inline">Profile</span>
@@ -259,22 +208,19 @@
                         <span>Saved (<span id="historyCount">0</span>)</span>
                     </button>
                     <select id="themeSelector" onchange="changeTheme(this.value)" aria-label="Select Theme" class="theme-input text-sm font-medium rounded-xl px-3 py-1.5 cursor-pointer">
-                        <optgroup label="Animated & Live Effects">
+                        <optgroup label="Animated Backgrounds">
+                            <option value="single-orb">Single Glowing Orb</option>
+                            <option value="waves">Ocean Waves</option>
+                            <option value="falling-leaves">Falling Leaves</option>
+                            <option value="cherry-blossoms">Cherry Blossoms</option>
                             <option value="colorful-bubbles">Colorful Bubbles (Black)</option>
                             <option value="pastel-shift">Shifting Pastel Aurora</option>
-                            <option value="firefly-night">Firefly Night Sky</option>
-                            <option value="cotton-candy">Cotton Candy Clouds</option>
-                            <option value="cyber-grid">Neon Cyber Orbs</option>
                         </optgroup>
-                        <optgroup label="Soft Aesthetic">
+                        <optgroup label="Static & Classic">
                             <option value="matcha">Matcha Cream</option>
-                            <option value="blossom">Blossom Pink</option>
-                            <option value="lavender">Lavender Mist</option>
-                            <option value="peach">Peach Sorbet</option>
-                        </optgroup>
-                        <optgroup label="Classic Modes">
                             <option value="light">Minimal Light</option>
                             <option value="forest-dark">Forest Dark</option>
+                            <option value="custom-gpt">Custom ChatGPT Background</option>
                         </optgroup>
                     </select>
                 </div>
@@ -283,15 +229,13 @@
 
         <!-- Main Content Area -->
         <main class="max-w-6xl mx-auto px-4 py-8 flex-grow w-full">
-            
-            <!-- Hero Introduction -->
             <div class="text-center mb-9">
                 <span class="inline-block px-3.5 py-1 rounded-full text-xs font-bold accent-badge mb-3">
                     <i class="fa-solid fa-sparkles mr-1"></i> IGCSE Lifecycle & Sustainable Shopping Tool
                 </span>
                 <h2 class="text-3xl sm:text-4xl font-extrabold mb-3 tracking-tight">Shop Smarter, Live Greener</h2>
                 <p class="muted-text max-w-2xl mx-auto text-sm sm:text-base">
-                    Search any product to compare eco-friendly packaging sellers, low-carbon options, durable investments, and budget choices across online and offline stores.
+                    Compare eco-friendly packaging, low-carbon options, durable choices, and budget options—with Budget always included.
                 </p>
             </div>
 
@@ -305,70 +249,64 @@
                         <i class="fa-solid fa-layer-group mr-1.5"></i> Category Browse
                     </button>
                     <button onclick="switchTab('usecase')" id="tab-usecase" class="px-4 py-2 text-sm font-semibold rounded-xl transition muted-text hover:opacity-80">
-                        <i class="fa-solid fa-wand-magic-sparkles mr-1.5"></i> Need Solver
+                        <i class="fa-solid fa-lightbulb mr-1.5"></i> Need Solver
                     </button>
                     <button onclick="switchTab('askus')" id="tab-askus" class="px-4 py-2 text-sm font-semibold rounded-xl transition muted-text hover:opacity-80">
-                        <i class="fa-solid fa-comments mr-1.5"></i> Ask Us / Use Case
+                        <i class="fa-solid fa-comments mr-1.5"></i> Ask Us / Inquiry
                     </button>
                 </div>
             </div>
 
             <!-- Search Container Box -->
             <div class="custom-card rounded-3xl p-6 sm:p-8 shadow-sm mb-10">
-                
-                <!-- Mode 1: Specific Product -->
                 <div id="panel-specific" class="search-panel">
                     <label class="block text-sm font-semibold mb-2">Search Any Product, Book, or Item:</label>
                     <div class="flex flex-col sm:flex-row gap-3">
                         <div class="relative flex-grow">
                             <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 muted-text"></i>
-                            <input type="text" id="specificInput" placeholder="e.g. Powerless book, MacBook Pro, Running Shoes, Tote Bag..." class="w-full theme-input rounded-2xl px-4 py-3 pl-11 text-sm">
+                            <input type="text" id="specificInput" placeholder="e.g. Powerless book, MacBook Pro, Running Shoes..." class="w-full theme-input rounded-2xl px-4 py-3 pl-11 text-sm">
                         </div>
                         <button onclick="analyzeProduct('specific')" class="btn-primary font-semibold px-6 py-3 rounded-2xl text-sm shadow-sm flex items-center justify-center space-x-2">
                             <span>Analyze Product</span>
                             <i class="fa-solid fa-arrow-right"></i>
                         </button>
                     </div>
-                    <!-- Quick Chips -->
                     <div class="mt-4 flex flex-wrap gap-2 items-center">
-                        <span class="text-xs muted-text font-medium">Try searching:</span>
+                        <span class="text-xs muted-text font-medium">Quick search:</span>
                         <button onclick="quickSearch('Powerless book')" class="text-xs px-3 py-1.5 subtle-box rounded-full font-medium hover:opacity-80 transition">Powerless book</button>
                         <button onclick="quickSearch('MacBook Pro')" class="text-xs px-3 py-1.5 subtle-box rounded-full font-medium hover:opacity-80 transition">MacBook Pro</button>
                         <button onclick="quickSearch('Running Shoes')" class="text-xs px-3 py-1.5 subtle-box rounded-full font-medium hover:opacity-80 transition">Running Shoes</button>
-                        <button onclick="quickSearch('Water Bottle')" class="text-xs px-3 py-1.5 subtle-box rounded-full font-medium hover:opacity-80 transition">Water Bottle</button>
                     </div>
                 </div>
 
-                <!-- Mode 2: Category Search -->
                 <div id="panel-category" class="search-panel hidden">
                     <label class="block text-sm font-semibold mb-3">Select a Product Category:</label>
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                        <button onclick="selectCategory('Books')" class="p-4 rounded-2xl subtle-box hover:opacity-85 text-left transition flex flex-col justify-between">
-                            <i class="fa-solid fa-book-open text-xl accent-text mb-2"></i>
+                        <button onclick="selectCategory('Books')" class="p-4 rounded-2xl subtle-box hover:opacity-85 text-left transition">
+                            <i class="fa-solid fa-book-open text-xl accent-text mb-2 block"></i>
                             <span class="font-bold text-sm">Books & Media</span>
                         </button>
-                        <button onclick="selectCategory('Laptops')" class="p-4 rounded-2xl subtle-box hover:opacity-85 text-left transition flex flex-col justify-between">
-                            <i class="fa-solid fa-laptop text-xl accent-text mb-2"></i>
+                        <button onclick="selectCategory('Laptops')" class="p-4 rounded-2xl subtle-box hover:opacity-85 text-left transition">
+                            <i class="fa-solid fa-laptop text-xl accent-text mb-2 block"></i>
                             <span class="font-bold text-sm">Laptops & Tech</span>
                         </button>
-                        <button onclick="selectCategory('Outerwear')" class="p-4 rounded-2xl subtle-box hover:opacity-85 text-left transition flex flex-col justify-between">
-                            <i class="fa-solid fa-shirt text-xl accent-text mb-2"></i>
+                        <button onclick="selectCategory('Outerwear')" class="p-4 rounded-2xl subtle-box hover:opacity-85 text-left transition">
+                            <i class="fa-solid fa-shirt text-xl accent-text mb-2 block"></i>
                             <span class="font-bold text-sm">Clothing & Basics</span>
                         </button>
-                        <button onclick="selectCategory('Footwear')" class="p-4 rounded-2xl subtle-box hover:opacity-85 text-left transition flex flex-col justify-between">
-                            <i class="fa-solid fa-shoe-prints text-xl accent-text mb-2"></i>
+                        <button onclick="selectCategory('Footwear')" class="p-4 rounded-2xl subtle-box hover:opacity-85 text-left transition">
+                            <i class="fa-solid fa-shoe-prints text-xl accent-text mb-2 block"></i>
                             <span class="font-bold text-sm">Footwear & Shoes</span>
                         </button>
                     </div>
                 </div>
 
-                <!-- Mode 3: Need Solver -->
                 <div id="panel-usecase" class="search-panel hidden">
-                    <label class="block text-sm font-semibold mb-2">Describe your exact use-case or need:</label>
+                    <label class="block text-sm font-semibold mb-2">Describe what you need:</label>
                     <div class="flex flex-col sm:flex-row gap-3">
                         <div class="relative flex-grow">
                             <i class="fa-solid fa-lightbulb absolute left-4 top-3.5 muted-text"></i>
-                            <input type="text" id="usecaseInput" placeholder="e.g. Daily university note-taking and coding, or reading fantasy novels..." class="w-full theme-input rounded-2xl px-4 py-3 pl-11 text-sm">
+                            <input type="text" id="usecaseInput" placeholder="e.g. Eco-friendly packaging for reading novels..." class="w-full theme-input rounded-2xl px-4 py-3 pl-11 text-sm">
                         </div>
                         <button onclick="analyzeProduct('usecase')" class="btn-primary font-semibold px-6 py-3 rounded-2xl text-sm shadow-sm flex items-center justify-center space-x-2">
                             <span>Find Best Match</span>
@@ -377,13 +315,12 @@
                     </div>
                 </div>
 
-                <!-- Mode 4: Ask Us / Custom Inquiry -->
                 <div id="panel-askus" class="search-panel hidden">
-                    <label class="block text-sm font-semibold mb-2">Ask about packaging, online vs. offline impact, or product use:</label>
+                    <label class="block text-sm font-semibold mb-2">Ask a lifecycle or packaging question:</label>
                     <div class="flex flex-col sm:flex-row gap-3">
                         <div class="relative flex-grow">
                             <i class="fa-solid fa-comment-dots absolute left-4 top-3.5 muted-text"></i>
-                            <input type="text" id="askusInput" placeholder="e.g. Which seller ships books in plastic-free packaging?" class="w-full theme-input rounded-2xl px-4 py-3 pl-11 text-sm">
+                            <input type="text" id="askusInput" placeholder="e.g. Which seller uses eco-friendly packaging for Powerless book?" class="w-full theme-input rounded-2xl px-4 py-3 pl-11 text-sm">
                         </div>
                         <button onclick="submitAskUs()" class="btn-primary font-semibold px-6 py-3 rounded-2xl text-sm shadow-sm flex items-center justify-center space-x-2">
                             <span>Ask Now</span>
@@ -393,14 +330,12 @@
                     <div id="askUsResponseContainer" class="mt-4 hidden subtle-box p-4 rounded-2xl text-sm leading-relaxed"></div>
                 </div>
 
-                <!-- Filter Option: Second-hand Checkbox -->
                 <div class="mt-6 pt-4 border-t border-[var(--border-color)] flex items-center space-x-3">
                     <input type="checkbox" id="includeSecondHand" class="w-4 h-4 rounded accent-[var(--accent-primary)] cursor-pointer">
                     <label for="includeSecondHand" class="text-sm font-medium muted-text cursor-pointer select-none">
-                        Include Second-Hand / Refurbished Items in Results
+                        Include Second-Hand / Refurbished Items (Budget box is always shown)
                     </label>
                 </div>
-
             </div>
 
             <!-- Results Output Section -->
@@ -410,42 +345,58 @@
                         <span class="text-xs font-bold uppercase tracking-wider accent-text" id="resultCategoryLabel">Product Analysis</span>
                         <h3 class="text-2xl font-extrabold" id="resultTitle">Product Name</h3>
                     </div>
-                    <div class="flex items-center space-x-3">
-                        <button onclick="saveToWishlist()" id="saveWishlistBtn" class="px-4 py-2 subtle-box rounded-xl text-sm font-semibold flex items-center space-x-2 hover:opacity-80 transition">
-                            <i class="fa-regular fa-heart accent-text"></i>
-                            <span>Save Item</span>
-                        </button>
-                    </div>
+                    <button onclick="saveToWishlist()" class="px-4 py-2 subtle-box rounded-xl text-sm font-semibold flex items-center space-x-2 hover:opacity-80 transition">
+                        <i class="fa-regular fa-heart accent-text"></i>
+                        <span>Save Item</span>
+                    </button>
                 </div>
 
-                <!-- Dynamic Recommendation Cards Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-8" id="tiersGrid">
-                    <!-- Cards injected dynamically based on user search -->
-                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-8" id="tiersGrid"></div>
 
-                <!-- IGCSE Environmental Impact Trade-off Card -->
                 <div class="custom-card rounded-3xl p-6">
                     <h5 class="text-xs font-bold uppercase tracking-wider accent-text mb-2 flex items-center">
                         <i class="fa-solid fa-scale-balanced mr-2"></i> IGCSE Environmental & Lifecycle Trade-Off Analysis
                     </h5>
-                    <p class="text-sm muted-text leading-relaxed" id="tradeoffText">
-                        Trade-off analysis details...
-                    </p>
+                    <p class="text-sm muted-text leading-relaxed" id="tradeoffText"></p>
                 </div>
-
             </div>
-
         </main>
 
-        <!-- Footer -->
         <footer class="border-t border-[var(--border-color)] py-6 mt-12 text-center text-xs muted-text">
             <p class="font-semibold">www.guidetoabetterpath.org &bull; IGCSE Environmental Management Consumer Decision Tool</p>
-            <p class="mt-1 opacity-75">Lifecycle metrics modeled from UNEP Global Resources Outlook & UNCTAD Reports</p>
         </footer>
     </div>
 
+    <!-- Describe Background & Make Using ChatGPT Modal -->
+    <div id="gptBgModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="custom-card rounded-3xl max-w-lg w-full p-6 shadow-xl">
+            <div class="flex justify-between items-center mb-3">
+                <h3 class="text-lg font-bold flex items-center"><i class="fa-solid fa-wand-magic-sparkles accent-text mr-2"></i> Describe Background (ChatGPT Maker)</h3>
+                <button onclick="closeModal('gptBgModal')" class="muted-text hover:opacity-75"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <p class="text-xs muted-text mb-3">
+                Describe the background you want. You can apply an instant live preview here or open a ready-to-run prompt in ChatGPT to generate custom HTML5 Canvas / CSS code for it.
+            </p>
+            <div class="space-y-3 text-sm">
+                <textarea id="bgDescriptionInput" rows="3" placeholder="e.g. Soft mint and pastel pink stars drifting slowly over a twilight sky..." class="w-full theme-input rounded-xl p-3 text-sm"></textarea>
+                <div class="flex flex-wrap gap-2">
+                    <button type="button" onclick="applyInstantCustomBg()" class="btn-primary px-4 py-2 rounded-xl text-xs font-semibold flex items-center">
+                        <i class="fa-solid fa-play mr-1.5"></i> Apply Live Background
+                    </button>
+                    <button type="button" onclick="openInChatGPT()" class="px-4 py-2 subtle-box rounded-xl text-xs font-semibold flex items-center hover:opacity-85">
+                        <i class="fa-solid fa-arrow-up-right-from-square mr-1.5 accent-text"></i> Make with ChatGPT
+                    </button>
+                    <button type="button" onclick="copyGptPrompt()" class="px-4 py-2 subtle-box rounded-xl text-xs font-semibold flex items-center hover:opacity-85">
+                        <i class="fa-regular fa-copy mr-1.5 accent-text"></i> Copy Prompt
+                    </button>
+                </div>
+                <div id="gptPromptPreview" class="hidden subtle-box p-3 rounded-xl text-xs muted-text break-words"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- Profile Modal -->
-    <div id="profileModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div id="profileModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="custom-card rounded-3xl max-w-md w-full p-6 shadow-xl">
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-lg font-bold">Profile Settings</h3>
@@ -464,16 +415,14 @@
         </div>
     </div>
 
-    <!-- History / Wishlist Modal -->
-    <div id="historyModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <!-- History Modal -->
+    <div id="historyModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="custom-card rounded-3xl max-w-lg w-full p-6 shadow-xl max-h-[80vh] flex flex-col">
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-lg font-bold">Search History & Saved Items</h3>
                 <button onclick="closeModal('historyModal')" class="muted-text hover:opacity-75"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <div id="historyListContainer" class="overflow-y-auto space-y-3 flex-grow pr-1">
-                <p class="muted-text text-sm text-center py-6">No recent searches or saved items yet.</p>
-            </div>
+            <div id="historyListContainer" class="overflow-y-auto space-y-3 flex-grow pr-1"></div>
             <div class="pt-4 border-t border-[var(--border-color)] flex justify-between items-center mt-4">
                 <button onclick="clearHistory()" class="text-xs text-rose-500 font-semibold hover:underline">Clear All</button>
                 <button onclick="closeModal('historyModal')" class="btn-primary px-4 py-2 rounded-xl text-xs font-semibold">Done</button>
@@ -481,37 +430,39 @@
         </div>
     </div>
 
-    <!-- Interactive Script Engine -->
     <script>
         let userProfile = JSON.parse(localStorage.getItem('betterpath_profile')) || { name: 'Student Researcher' };
         let searchHistory = JSON.parse(localStorage.getItem('betterpath_history')) || [];
         let wishlist = JSON.parse(localStorage.getItem('betterpath_wishlist')) || [];
+        let customBgConfig = JSON.parse(localStorage.getItem('betterpath_custom_bg')) || {
+            desc: 'Soft glowing stars',
+            bgColor: '#0d1117',
+            accentColor: '#22d3ee',
+            particleColor: 'rgba(34, 211, 238, 0.55)',
+            shape: 'star'
+        };
 
         document.getElementById('navProfileName').textContent = userProfile.name;
         document.getElementById('profileNameInput').value = userProfile.name;
+        document.getElementById('bgDescriptionInput').value = customBgConfig.desc;
+        applyCustomCssVars(customBgConfig);
         updateHistoryCount();
 
-        // Dynamic Multi-Theme Canvas Engine (Colorful Bubbles, Fireflies, Pastel Orbs, etc.)
+        // Canvas Background Engine
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
-        let particles = [];
+        let items = [];
+        let waveTime = 0;
 
         const bubbleColors = [
-            'rgba(255, 105, 180, 0.45)', // Hot Pink
-            'rgba(0, 229, 255, 0.45)',   // Cyan
-            'rgba(179, 136, 255, 0.45)', // Soft Violet
-            'rgba(105, 240, 174, 0.45)', // Mint Green
-            'rgba(255, 215, 64, 0.45)',  // Warm Yellow
-            'rgba(255, 138, 101, 0.45)'  // Coral
+            'rgba(255, 105, 180, 0.45)',
+            'rgba(0, 229, 255, 0.45)',
+            'rgba(179, 136, 255, 0.45)',
+            'rgba(105, 240, 174, 0.45)',
+            'rgba(255, 215, 64, 0.45)'
         ];
-
-        const pastelColors = [
-            'rgba(255, 182, 193, 0.5)',
-            'rgba(216, 180, 254, 0.5)',
-            'rgba(165, 243, 252, 0.5)',
-            'rgba(187, 247, 208, 0.5)',
-            'rgba(254, 240, 138, 0.5)'
-        ];
+        const leafColors = ['#f59e0b', '#ea580c', '#ca8a04', '#84cc16'];
+        const blossomColors = ['#fbcfe8', '#f9a8d4', '#f472b6', '#fce7f3'];
 
         function resizeCanvas() {
             canvas.width = window.innerWidth;
@@ -520,89 +471,211 @@
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
-        function initParticles() {
-            particles = [];
-            const count = 42;
-            for (let i = 0; i < count; i++) {
-                particles.push({
+        function initItems() {
+            items = [];
+            for (let i = 0; i < 36; i++) {
+                items.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
-                    radius: Math.random() * 24 + 6,
-                    smallRadius: Math.random() * 3.5 + 1.5,
-                    speedX: (Math.random() - 0.5) * 0.6,
-                    speedY: -(Math.random() * 0.8 + 0.25), // Float upward gently
+                    size: Math.random() * 14 + 6,
+                    speedX: (Math.random() - 0.5) * 0.8,
+                    speedY: Math.random() * 0.7 + 0.3,
+                    angle: Math.random() * Math.PI * 2,
+                    spin: (Math.random() - 0.5) * 0.03,
+                    phase: Math.random() * Math.PI * 2,
                     color: bubbleColors[i % bubbleColors.length],
-                    pastelColor: pastelColors[i % pastelColors.length],
-                    phase: Math.random() * Math.PI * 2
+                    leafColor: leafColors[i % leafColors.length],
+                    blossomColor: blossomColors[i % blossomColors.length]
                 });
             }
         }
-        initParticles();
+        initItems();
 
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            const currentTheme = document.documentElement.getAttribute('data-theme') || 'colorful-bubbles';
-
-            particles.forEach((p, idx) => {
-                p.phase += 0.02;
-                p.x += p.speedX + Math.sin(p.phase) * 0.3;
-                p.y += p.speedY;
-
-                if (p.y < -40) {
-                    p.y = canvas.height + 40;
-                    p.x = Math.random() * canvas.width;
-                }
-                if (p.x < -40) p.x = canvas.width + 40;
-                if (p.x > canvas.width + 40) p.x = -40;
-
-                ctx.beginPath();
-
-                if (currentTheme === 'colorful-bubbles') {
-                    // Glowing colorful soap bubbles floating on black background
-                    const grad = ctx.createRadialGradient(
-                        p.x - p.radius * 0.3, p.y - p.radius * 0.3, p.radius * 0.1,
-                        p.x, p.y, p.radius
-                    );
-                    grad.addColorStop(0, 'rgba(255, 255, 255, 0.7)');
-                    grad.addColorStop(0.4, p.color);
-                    grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
-
-                    ctx.fillStyle = grad;
-                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                    ctx.fill();
-
-                    ctx.strokeStyle = p.color;
-                    ctx.lineWidth = 1.2;
-                    ctx.stroke();
-                } else if (currentTheme === 'pastel-shift' || currentTheme === 'cotton-candy') {
-                    // Soft dreamy pastel orbs
-                    ctx.fillStyle = p.pastelColor;
-                    ctx.arc(p.x, p.y, p.radius * 1.2, 0, Math.PI * 2);
-                    ctx.fill();
-                } else if (currentTheme === 'firefly-night') {
-                    // Twinkling golden fireflies
-                    const glow = 0.4 + Math.sin(p.phase * 2) * 0.4;
-                    ctx.fillStyle = `rgba(250, 204, 21, ${Math.max(0.1, glow)})`;
-                    ctx.arc(p.x, p.y, p.smallRadius + 1.5, 0, Math.PI * 2);
-                    ctx.fill();
-                } else if (currentTheme === 'cyber-grid') {
-                    // Neon cyan & magenta glowing orbs
-                    ctx.fillStyle = idx % 2 === 0 ? 'rgba(6, 182, 212, 0.35)' : 'rgba(232, 121, 249, 0.35)';
-                    ctx.arc(p.x, p.y, p.radius * 0.75, 0, Math.PI * 2);
-                    ctx.fill();
-                } else {
-                    // Subtle accent particles for classic themes
-                    ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--accent-primary') || '#5e8b62';
-                    ctx.globalAlpha = 0.25;
-                    ctx.arc(p.x, p.y, p.smallRadius, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.globalAlpha = 1;
-                }
-            });
-
-            requestAnimationFrame(animateParticles);
+        function drawLeafOrPetal(x, y, size, angle, color, isPetal) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate(angle);
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            if (isPetal) {
+                ctx.ellipse(0, 0, size * 0.7, size * 0.38, 0, 0, Math.PI * 2);
+            } else {
+                ctx.moveTo(0, -size);
+                ctx.quadraticCurveTo(size * 0.8, 0, 0, size);
+                ctx.quadraticCurveTo(-size * 0.8, 0, 0, -size);
+            }
+            ctx.fill();
+            ctx.restore();
         }
-        animateParticles();
+
+        function drawStar(x, y, r, color) {
+            ctx.save();
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            for (let i = 0; i < 5; i++) {
+                const outerAngle = (i * 2 * Math.PI) / 5 - Math.PI / 2;
+                const innerAngle = outerAngle + Math.PI / 5;
+                if (i === 0) ctx.moveTo(x + Math.cos(outerAngle) * r, y + Math.sin(outerAngle) * r);
+                else ctx.lineTo(x + Math.cos(outerAngle) * r, y + Math.sin(outerAngle) * r);
+                ctx.lineTo(x + Math.cos(innerAngle) * (r * 0.45), y + Math.sin(innerAngle) * (r * 0.45));
+            }
+            ctx.closePath();
+            ctx.fill();
+            ctx.restore();
+        }
+
+        function animateBg() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const theme = document.documentElement.getAttribute('data-theme') || 'single-orb';
+            waveTime += 0.018;
+
+            if (theme === 'single-orb') {
+                // Only ONE glowing orb drifting gently
+                const orbX = canvas.width * 0.5 + Math.cos(waveTime * 0.6) * (canvas.width * 0.18);
+                const orbY = canvas.height * 0.42 + Math.sin(waveTime * 0.8) * (canvas.height * 0.12);
+                const radius = Math.min(canvas.width, canvas.height) * 0.16;
+                const grad = ctx.createRadialGradient(orbX, orbY, radius * 0.08, orbX, orbY, radius);
+                grad.addColorStop(0, 'rgba(125, 211, 252, 0.55)');
+                grad.addColorStop(0.5, 'rgba(56, 189, 248, 0.22)');
+                grad.addColorStop(1, 'rgba(56, 189, 248, 0)');
+                ctx.fillStyle = grad;
+                ctx.beginPath();
+                ctx.arc(orbX, orbY, radius, 0, Math.PI * 2);
+                ctx.fill();
+            } else if (theme === 'waves') {
+                for (let layer = 0; layer < 3; layer++) {
+                    ctx.beginPath();
+                    const baseY = canvas.height * (0.58 + layer * 0.13);
+                    const amp = 18 + layer * 8;
+                    ctx.moveTo(0, canvas.height);
+                    for (let x = 0; x <= canvas.width; x += 20) {
+                        const y = baseY + Math.sin(x * 0.008 + waveTime + layer * 1.4) * amp;
+                        ctx.lineTo(x, y);
+                    }
+                    ctx.lineTo(canvas.width, canvas.height);
+                    ctx.closePath();
+                    ctx.fillStyle = layer === 0
+                        ? 'rgba(45, 212, 191, 0.14)'
+                        : layer === 1
+                            ? 'rgba(14, 165, 233, 0.18)'
+                            : 'rgba(2, 132, 199, 0.24)';
+                    ctx.fill();
+                }
+            } else if (theme === 'falling-leaves') {
+                items.forEach(item => {
+                    item.phase += 0.03;
+                    item.angle += item.spin;
+                    item.x += Math.sin(item.phase) * 0.9 + 0.3;
+                    item.y += item.speedY + 0.4;
+                    if (item.y > canvas.height + 30) { item.y = -30; item.x = Math.random() * canvas.width; }
+                    if (item.x > canvas.width + 30) item.x = -30;
+                    drawLeafOrPetal(item.x, item.y, item.size * 0.75, item.angle, item.leafColor, false);
+                });
+            } else if (theme === 'cherry-blossoms') {
+                items.forEach(item => {
+                    item.phase += 0.035;
+                    item.angle += item.spin;
+                    item.x += Math.cos(item.phase) * 0.85 - 0.25;
+                    item.y += item.speedY + 0.35;
+                    if (item.y > canvas.height + 30) { item.y = -30; item.x = Math.random() * canvas.width; }
+                    if (item.x < -30) item.x = canvas.width + 30;
+                    drawLeafOrPetal(item.x, item.y, item.size * 0.7, item.angle, item.blossomColor, true);
+                });
+            } else if (theme === 'colorful-bubbles') {
+                items.forEach(item => {
+                    item.phase += 0.025;
+                    item.x += Math.sin(item.phase) * 0.5;
+                    item.y -= item.speedY;
+                    if (item.y < -35) { item.y = canvas.height + 35; item.x = Math.random() * canvas.width; }
+                    const r = item.size * 1.3;
+                    const grad = ctx.createRadialGradient(item.x - r * 0.3, item.y - r * 0.3, r * 0.1, item.x, item.y, r);
+                    grad.addColorStop(0, 'rgba(255, 255, 255, 0.65)');
+                    grad.addColorStop(0.45, item.color);
+                    grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+                    ctx.fillStyle = grad;
+                    ctx.beginPath();
+                    ctx.arc(item.x, item.y, r, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+            } else if (theme === 'custom-gpt') {
+                items.forEach((item, idx) => {
+                    item.phase += 0.025;
+                    item.x += Math.sin(item.phase) * 0.6;
+                    item.y -= item.speedY * 0.75;
+                    if (item.y < -30) { item.y = canvas.height + 30; item.x = Math.random() * canvas.width; }
+                    if (customBgConfig.shape === 'star') {
+                        drawStar(item.x, item.y, item.size * 0.6, customBgConfig.particleColor);
+                    } else {
+                        ctx.fillStyle = customBgConfig.particleColor;
+                        ctx.beginPath();
+                        ctx.arc(item.x, item.y, item.size * (idx % 2 === 0 ? 0.8 : 0.45), 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                });
+            }
+
+            requestAnimationFrame(animateBg);
+        }
+        animateBg();
+
+        function applyCustomCssVars(cfg) {
+            const root = document.documentElement;
+            root.style.setProperty('--custom-bg', cfg.bgColor);
+            root.style.setProperty('--custom-accent', cfg.accentColor);
+        }
+
+        function buildChatGptPrompt(desc) {
+            return `Create a smooth HTML5 <canvas> and CSS animated background for a web app called EthicalShop Guide based on this description: "${desc}". Provide clean, self-contained HTML/CSS/JS code that does not block clicks (pointer-events: none).`;
+        }
+
+        function applyInstantCustomBg() {
+            const desc = document.getElementById('bgDescriptionInput').value.trim() || 'Soft glowing stars';
+            const lower = desc.toLowerCase();
+            let bgColor = '#0d1117';
+            let accentColor = '#22d3ee';
+            let particleColor = 'rgba(34, 211, 238, 0.55)';
+            let shape = 'orb';
+
+            if (lower.includes('star') || lower.includes('galaxy') || lower.includes('night')) {
+                bgColor = '#090d1e';
+                accentColor = '#c084fc';
+                particleColor = 'rgba(253, 224, 71, 0.75)';
+                shape = 'star';
+            } else if (lower.includes('pink') || lower.includes('blossom') || lower.includes('rose')) {
+                bgColor = '#1f1018';
+                accentColor = '#f472b6';
+                particleColor = 'rgba(244, 114, 182, 0.55)';
+            } else if (lower.includes('mint') || lower.includes('green') || lower.includes('forest')) {
+                bgColor = '#0b1914';
+                accentColor = '#34d399';
+                particleColor = 'rgba(52, 211, 153, 0.55)';
+            }
+
+            customBgConfig = { desc, bgColor, accentColor, particleColor, shape };
+            localStorage.setItem('betterpath_custom_bg', JSON.stringify(customBgConfig));
+            applyCustomCssVars(customBgConfig);
+            changeTheme('custom-gpt');
+            document.getElementById('themeSelector').value = 'custom-gpt';
+
+            const preview = document.getElementById('gptPromptPreview');
+            preview.classList.remove('hidden');
+            preview.innerHTML = `<strong>Applied Custom Background:</strong> "${desc}" — Want even more detail? Click <em>Make with ChatGPT</em> to generate custom code.`;
+        }
+
+        function copyGptPrompt() {
+            const desc = document.getElementById('bgDescriptionInput').value.trim() || 'Animated pastel floating shapes';
+            const prompt = buildChatGptPrompt(desc);
+            navigator.clipboard.writeText(prompt);
+            const preview = document.getElementById('gptPromptPreview');
+            preview.classList.remove('hidden');
+            preview.textContent = `Copied ChatGPT prompt: ${prompt}`;
+        }
+
+        function openInChatGPT() {
+            const desc = document.getElementById('bgDescriptionInput').value.trim() || 'Animated pastel floating shapes';
+            const prompt = encodeURIComponent(buildChatGptPrompt(desc));
+            window.open(`https://chatgpt.com/?q=${prompt}`, '_blank', 'noopener,noreferrer');
+        }
 
         function switchTab(mode) {
             ['specific', 'category', 'usecase', 'askus'].forEach(m => {
@@ -632,104 +705,52 @@
                     title: "Most Eco-Friendly Packaging",
                     brand: "Crossword (Eco-Conscious Packaging)",
                     carbon: "2.4 kg CO₂e",
-                    desc: "Ships 'Powerless' using plastic-free, recyclable kraft paper mailers with minimal transit waste.",
+                    desc: "Uses eco-conscious paper/kraft dispatch packaging for 'Powerless' to cut single-use plastic waste.",
                     onlineStore: "Crossword Online",
                     offlineStore: "Crossword Bookstores",
                     lowestPriceLink: "https://www.crossword.in/products/powerless-paperback-lauren-roberts",
                     priceTag: "₹499",
                     isSecondHand: false,
-                    bestFor: "Best for Plastic-Free Delivery"
+                    bestFor: "Best for Eco-Friendly Packaging"
                 },
-                eco: { 
-                    title: "Lowest Carbon / Digital",
-                    brand: "Kindle / E-Book Edition", 
+                eco: {
+                    title: "Eco-Friendly / Low Carbon",
+                    brand: "Kindle / E-Book Edition",
                     carbon: "0.8 kg CO₂e",
-                    desc: "Zero physical packaging, zero paper pulp extraction, and instant digital delivery.", 
-                    onlineStore: "Amazon Kindle Store", 
+                    desc: "Zero shipping packaging and no new paper pulp extraction.",
+                    onlineStore: "Amazon Kindle Store",
                     offlineStore: "Local Public Library",
                     lowestPriceLink: "https://www.amazon.in/dp/B0C7644P8T",
                     priceTag: "₹349",
                     isSecondHand: false
                 },
-                qual: { 
-                    title: "Most Durable / Collector",
-                    brand: "Hardcover Edition (Simon & Schuster)", 
+                qual: {
+                    title: "Most Effective / Durable",
+                    brand: "Hardcover Edition",
                     carbon: "4.5 kg CO₂e",
-                    desc: "Stitched binding and acid-free paper designed to last decades without wear.", 
-                    onlineStore: "Amazon India / Bookswagon", 
+                    desc: "Sturdy binding built for repeat reading and long-term shelf durability.",
+                    onlineStore: "Bookswagon / Amazon India",
                     offlineStore: "Oxford Bookstore",
                     lowestPriceLink: "https://www.bookswagon.com",
                     priceTag: "₹999",
                     isSecondHand: false,
-                    bestFor: "Best for Long-Term Preservation"
+                    bestFor: "Best for Longevity"
                 },
-                budget: { 
-                    title: "Budget / Pre-Owned",
-                    brand: "Second-Hand Paperback Copy", 
-                    carbon: "1.1 kg CO₂e",
-                    desc: "Circulates existing copies between readers, avoiding new paper manufacturing.", 
-                    onlineStore: "BookChor / ThriftBooks", 
-                    offlineStore: "Local Second-Hand Book Stalls",
+                budget: {
+                    title: "Budget Option (Always Shown)",
+                    brand: "Value Paperback Edition",
+                    carbon: "1.9 kg CO₂e",
+                    desc: "Affordable standard paperback option that keeps reading costs low.",
+                    onlineStore: "BookChor / Amazon India",
+                    offlineStore: "Local Bookstores & Stalls",
                     lowestPriceLink: "https://www.bookchor.com",
                     priceTag: "₹249",
-                    isSecondHand: true
+                    isSecondHand: false
                 },
-                tradeoff: "Single-use bubble wrap mailers add unnecessary plastic waste to book deliveries. Ordering from sellers with plastic-free kraft packaging or picking up locally cuts packaging emissions significantly."
-            },
-            "macbook": {
-                name: "MacBook Pro / Laptop",
-                category: "Laptops & Electronics",
-                packagingOption: {
-                    title: "Most Eco-Friendly Packaging",
-                    brand: "Apple Certified 100% Fiber Packaging",
-                    carbon: "295 kg CO₂e",
-                    desc: "Ships in 100% wood-fiber, plastic-free molded pulp packaging sourced from responsibly managed forests.",
-                    onlineStore: "Apple Official Store",
-                    offlineStore: "Apple Store BKC / Authorized Resellers",
-                    lowestPriceLink: "https://www.apple.com/in/macbook-pro/",
-                    priceTag: "₹1,49,900",
-                    isSecondHand: false,
-                    bestFor: "Best for Plastic-Free Packaging & Longevity"
-                },
-                eco: { 
-                    title: "Lowest Carbon / Refurbished",
-                    brand: "Certified Refurbished MacBook", 
-                    carbon: "48 kg CO₂e",
-                    desc: "Extends device lifespan and saves ~700 kg of raw mineral and metal extraction.", 
-                    onlineStore: "Cashify / BackMarket", 
-                    offlineStore: "Local Certified Tech Hubs",
-                    lowestPriceLink: "https://www.cashify.in",
-                    priceTag: "₹42,000",
-                    isSecondHand: true
-                },
-                qual: { 
-                    title: "Most Durable / Workhorse",
-                    brand: "Lenovo ThinkPad T-Series", 
-                    carbon: "280 kg CO₂e",
-                    desc: "Modular RAM/SSD slots and MIL-STD durability built for 7+ years of heavy daily use.", 
-                    onlineStore: "Lenovo Official India", 
-                    offlineStore: "Lenovo Exclusive Stores",
-                    lowestPriceLink: "https://www.lenovo.com/in/en/",
-                    priceTag: "₹88,000",
-                    isSecondHand: false,
-                    bestFor: "Best for Repairability & Daily Study/Work"
-                },
-                budget: { 
-                    title: "Budget / Pre-Owned",
-                    brand: "Refurbished Business ThinkPad", 
-                    carbon: "65 kg CO₂e",
-                    desc: "Affordable pre-owned enterprise hardware with easily replaceable batteries.", 
-                    onlineStore: "Amazon Renewed", 
-                    offlineStore: "Local Computer Markets",
-                    lowestPriceLink: "https://www.amazon.in",
-                    priceTag: "₹19,500",
-                    isSecondHand: true
-                },
-                tradeoff: "Over 75% of a laptop's lifetime carbon footprint occurs during raw mineral mining and manufacturing. Keeping a laptop for 6+ years or choosing certified refurbished units cuts annualized emissions in half."
+                tradeoff: "Choosing eco-conscious book packaging avoids plastic mailers, while budget editions keep costs accessible."
             }
         };
 
-        // Dynamic generator for ANY product or book typed by the user
         function buildDynamicProduct(rawQuery) {
             const cleanName = rawQuery.trim();
             const capName = cleanName.charAt(0).toUpperCase() + cleanName.slice(1);
@@ -740,66 +761,65 @@
                 category: "Tailored Product & Packaging Search",
                 packagingOption: {
                     title: "Most Eco-Friendly Packaging",
-                    brand: `${capName} — Plastic-Free / Minimal Mailer Seller`,
+                    brand: `${capName} — Eco-Packaging Seller`,
                     carbon: "4.2 kg CO₂e",
-                    desc: `Selects sellers offering 100% recyclable cardboard/paper packaging and consolidated shipping for ${capName}.`,
-                    onlineStore: "Eco-Packaging Direct / Amazon Climate Pledge",
-                    offlineStore: "Local Store Pickup (Zero Shipping Packaging)",
+                    desc: `Prioritizes recyclable paper/cardboard packaging and minimal waste for ${capName}.`,
+                    onlineStore: "Eco-Packaging Sellers",
+                    offlineStore: "Local Store Pickup",
                     lowestPriceLink: `https://www.google.com/search?q=${encoded}+eco+friendly+packaging+buy`,
                     priceTag: "Compare Lowest",
                     isSecondHand: false,
-                    bestFor: "Best for Low-Waste Packaging"
+                    bestFor: "Best for Eco Packaging"
                 },
                 eco: {
-                    title: "Eco-Friendly Material Choice",
-                    brand: `Sustainable / Low-Impact ${capName}`,
+                    title: "Eco-Friendly / Low Carbon",
+                    brand: `Low-Impact ${capName}`,
                     carbon: "6.5 kg CO₂e",
-                    desc: `Made with certified recycled, organic, or sustainably sourced materials with lower production emissions.`,
-                    onlineStore: "Brown Living / Eco-Certified Stores",
-                    offlineStore: "Local Eco-Friendly Boutiques",
+                    desc: `Lower lifecycle emissions through sustainable or recycled materials.`,
+                    onlineStore: "Brown Living / Eco Stores",
+                    offlineStore: "Local Eco Boutiques",
                     lowestPriceLink: `https://www.google.com/search?q=sustainable+eco+friendly+${encoded}`,
                     priceTag: "Eco Tier",
                     isSecondHand: false
                 },
                 qual: {
-                    title: "Most Effective / Durable Choice",
-                    brand: `Heavy-Duty Long-Life ${capName}`,
+                    title: "Most Effective / Durable",
+                    brand: `Durable ${capName}`,
                     carbon: "14.0 kg CO₂e",
-                    desc: `Engineered with reinforced materials and warranty support to maximize lifespan and prevent frequent replacements.`,
+                    desc: `Built for longer service life and dependable everyday performance.`,
                     onlineStore: "Official Brand Store",
-                    offlineStore: "Authorized Flagship Retailers",
-                    lowestPriceLink: `https://www.google.com/search?q=best+durable+${encoded}+buy+online`,
-                    priceTag: "Best Value Over Time",
+                    offlineStore: "Authorized Retailers",
+                    lowestPriceLink: `https://www.google.com/search?q=durable+${encoded}+buy+online`,
+                    priceTag: "Best Longevity",
                     isSecondHand: false,
-                    bestFor: "Best for Effective Use & Durability"
+                    bestFor: "Best for Effective Use"
                 },
                 budget: {
-                    title: "Budget / Pre-Owned Choice",
-                    brand: `Second-Hand / Pre-Owned ${capName}`,
-                    carbon: "1.8 kg CO₂e",
-                    desc: `Pre-owned listing that avoids new manufacturing emissions and saves money.`,
-                    onlineStore: "OLX / Quikr / Thrift Marketplaces",
-                    offlineStore: "Local Thrift & Resale Markets",
-                    lowestPriceLink: `https://www.google.com/search?q=second+hand+${encoded}+buy`,
-                    priceTag: "Lowest Cost",
-                    isSecondHand: true
+                    title: "Budget Option (Always Shown)",
+                    brand: `Budget-Friendly ${capName}`,
+                    carbon: "5.4 kg CO₂e",
+                    desc: `Lowest-cost option to fit a tight budget while balancing practical use.`,
+                    onlineStore: "Amazon / Flipkart / Local Deals",
+                    offlineStore: "Local Markets & Stores",
+                    lowestPriceLink: `https://www.google.com/search?q=lowest+price+${encoded}+buy`,
+                    priceTag: "Budget Pick",
+                    isSecondHand: false
                 },
-                tradeoff: `When purchasing '${capName}', choosing local store pickup or plastic-free kraft packaging eliminates single-use polybags, while durable materials lower per-use carbon impact.`
+                tradeoff: `Comparing packaging, carbon footprint, durability, and budget for '${capName}' helps balance environmental impact with affordability.`
             };
         }
 
         function analyzeProduct(mode) {
-            let rawQuery = mode === 'specific'
+            const rawQuery = mode === 'specific'
                 ? document.getElementById('specificInput').value.trim()
                 : document.getElementById('usecaseInput').value.trim();
 
             if (!rawQuery) {
-                alert('Please enter a product, book, or use-case first!');
+                alert('Please enter a product or need first!');
                 return;
             }
 
-            const lowerQuery = rawQuery.toLowerCase();
-            const matchedKey = Object.keys(productDatabase).find(k => lowerQuery.includes(k));
+            const matchedKey = Object.keys(productDatabase).find(k => rawQuery.toLowerCase().includes(k));
             const data = matchedKey ? productDatabase[matchedKey] : buildDynamicProduct(rawQuery);
             const includeSecondHand = document.getElementById('includeSecondHand').checked;
 
@@ -807,10 +827,9 @@
             document.getElementById('resultCategoryLabel').textContent = data.category;
             document.getElementById('tradeoffText').textContent = data.tradeoff;
 
-            const tiersGrid = document.getElementById('tiersGrid');
-            let cardsHtml = '';
-
+            // Budget (data.budget) is always included in the grid
             const cardsList = [data.packagingOption, data.eco, data.qual, data.budget];
+            let cardsHtml = '';
 
             cardsList.forEach(tier => {
                 if (!tier) return;
@@ -832,7 +851,6 @@
                             </div>
                             <h4 class="text-base font-extrabold mb-1.5 leading-snug">${tier.brand}</h4>
                             <p class="muted-text text-xs mb-4 leading-relaxed">${tier.desc}</p>
-                            
                             <div class="subtle-box rounded-2xl p-3 text-xs space-y-2 mb-4">
                                 <div class="flex items-start space-x-2">
                                     <i class="fa-solid fa-globe accent-text mt-0.5"></i>
@@ -855,25 +873,18 @@
                 `;
             });
 
-            tiersGrid.innerHTML = cardsHtml;
+            document.getElementById('tiersGrid').innerHTML = cardsHtml;
             document.getElementById('resultsSection').classList.remove('hidden');
             document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
             addToHistory(data.name);
         }
-
-        document.getElementById('includeSecondHand').addEventListener('change', () => {
-            if (!document.getElementById('resultsSection').classList.contains('hidden')) {
-                const activeMode = !document.getElementById('panel-usecase').classList.contains('hidden') ? 'usecase' : 'specific';
-                analyzeProduct(activeMode);
-            }
-        });
 
         function submitAskUs() {
             const val = document.getElementById('askusInput').value.trim();
             if (!val) { alert('Please type a question!'); return; }
             const resp = document.getElementById('askUsResponseContainer');
             resp.classList.remove('hidden');
-            resp.innerHTML = `<strong>Lifecycle & Packaging Insight:</strong> For your inquiry ("<em>${val}</em>"), UNCTAD and UNEP reports highlight that single-use plastic mailers and expedited split-shipments significantly raise e-commerce waste. Buying from retailers with plastic-free kraft packaging—or picking up directly from a local store via public transit—achieves the lowest combined product and packaging footprint.`;
+            resp.innerHTML = `<strong>Lifecycle & Packaging Insight:</strong> For "${val}", choosing sellers with plastic-free kraft/paper mailers or local pickup lowers packaging waste, while comparing against a budget option keeps costs practical.`;
         }
 
         function addToHistory(name) {
